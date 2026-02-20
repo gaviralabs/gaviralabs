@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GaviraLabs — Productos digitales, herramientas y experiencias</title>
+    <meta
+      name="description"
+      content="GaviraLabs es mi estudio personal: construyo herramientas digitales, productos web y proyectos creativos con enfoque en rendimiento, diseño y escalabilidad."
+    />
+    <meta name="theme-color" content="#0b0f19" />
+    <link rel="icon" href="/favicon.svg" />
+    <link rel="canonical" href="https://www.gaviralabs.com/" />
+    <meta name="robots" content="index,follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="GaviraLabs — Digital products, tools and experiences" />
+    <meta property="og:description" content="Personal studio building modern web tools and products focused on performance, design and scalability." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.gaviralabs.com/" />
+    <meta property="og:image" content="https://www.gaviralabs.com/assets/og.jpg" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GaviraLabs — Digital products, tools and experiences" />
+    <meta name="twitter:description" content="Tools, products and modern web experiences." />
+    <meta name="twitter:image" content="https://www.gaviralabs.com/assets/og.jpg" />
+
+
+    <!-- Tailwind (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Highlight.js (syntax highlight) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github-dark.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/highlight.min.js"></script>
+
+    <!-- GSAP animations -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <style>
+      /* Smooth edges + better text rendering */
+      html { scroll-behavior: smooth; }
+      body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+      /* Neon gradient accent */
+      .glow {
+        filter: drop-shadow(0 0 22px rgba(99, 102, 241, 0.35))
+                drop-shadow(0 0 48px rgba(34, 211, 238, 0.18));
+      }
+
+      /* Subtle animated grid */
+      .grid-bg {
+        background-image:
+          linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: radial-gradient(ellipse at top, rgba(0,0,0,1), rgba(0,0,0,0.1) 60%, rgba(0,0,0,0) 75%);
+        opacity: 0.35;
+      }
+
+      /* Video overlay to ensure readability */
+      .video-overlay {
+        background: radial-gradient(1200px 650px at 25% 20%, rgba(99, 102, 241, 0.35), transparent 55%),
+                    radial-gradient(900px 520px at 75% 35%, rgba(34, 211, 238, 0.22), transparent 60%),
+                    linear-gradient(to bottom, rgba(11, 15, 25, 0.75), rgba(11, 15, 25, 0.95));
+      }
+
+      /* Live code terminal */
+      .terminal {
+        background: rgba(0, 0, 0, 0.35);
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        backdrop-filter: blur(14px);
+      }
+      .caret {
+        display: inline-block;
+        width: 10px;
+        height: 1.2em;
+        transform: translateY(3px);
+        background: rgba(255,255,255,0.85);
+        animation: blink 0.9s infinite;
+        margin-left: 2px;
+      }
+      @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+      /* Buttons */
+      .btn {
+        transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+      }
+      .btn:hover { transform: translateY(-1px); }
+      .btn:active { transform: translateY(0px); }
+
+      /* Better focus visibility */
+      :focus-visible {
+        outline: 2px solid rgba(99, 102, 241, 0.9);
+        outline-offset: 3px;
+        border-radius: 10px;
+      }
+
+      /* Reduce motion */
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .caret { animation: none; }
+      }
+    </style>
+  </head>
+
+  <body class="bg-slate-950 text-white">
+    <a href="#top" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-slate-950">
+      Saltar al contenido
+    </a>
+
+    <!-- Top background -->
+    <div class="fixed inset-0 -z-10">
+      <!-- Replace with your own video at /assets/hero.mp4 or /assets/hero.webm -->
+      <video
+        class="h-full w-full object-cover opacity-60"
+        autoplay
+        muted
+        playsinline
+        loop
+        poster="/assets/hero-poster.jpg"
+      >
+        <source src="/assets/hero.webm" type="video/webm" />
+        <source src="/assets/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 video-overlay"></div>
+      <div class="absolute inset-0 grid-bg"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/30 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <a href="#top" class="flex items-center gap-2">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/10 glow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="opacity-90">
+              <path d="M12 2l8.5 5v10L12 22 3.5 17V7L12 2z" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M12 7v10" stroke="currentColor" stroke-width="1.6" opacity="0.7"/>
+              <path d="M7.5 9.5L12 12l4.5-2.5" stroke="currentColor" stroke-width="1.6" opacity="0.7"/>
+            </svg>
+          </span>
+          <div class="leading-tight">
+            <div class="font-semibold tracking-tight">GaviraLabs</div>
+            <div class="text-xs text-white/60" data-i18n="tagline">Estudio de productos digitales</div>
+          </div>
+        </a>
+
+        <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+          <a href="#projects" class="text-sm text-white/80 hover:text-white" data-i18n="nav_projects">Proyectos</a>
+          <a href="#about" class="text-sm text-white/80 hover:text-white" data-i18n="nav_about">Sobre mí</a>
+          <a href="#contact" class="text-sm text-white/80 hover:text-white" data-i18n="nav_contact">Contacto</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <!-- Language toggle -->
+          <div class="flex rounded-xl bg-white/5 p-1 ring-1 ring-white/10" role="group" aria-label="Language">
+            <button
+              id="lang-es"
+              class="rounded-lg px-3 py-1 text-xs font-medium text-white bg-white/10"
+              aria-label="Cambiar a Español"
+              type="button"
+            >
+              ES
+            </button>
+            <button
+              id="lang-en"
+              class="rounded-lg px-3 py-1 text-xs font-medium text-white/70 hover:text-white"
+              aria-label="Switch to English"
+              type="button"
+            >
+              EN
+            </button>
+          </div>
+
+          <a
+            href="#projects"
+            class="btn hidden rounded-xl bg-indigo-500/90 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500 md:inline-flex"
+            data-i18n="cta_header"
+          >
+            Ver proyectos
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main id="top" class="mx-auto max-w-6xl px-4">
+      <!-- Hero -->
+      <section class="relative py-14 md:py-20">
+        <div class="grid items-center gap-10 md:grid-cols-2">
+          <div>
+            <div class="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs text-white/75 ring-1 ring-white/10">
+              <span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(52,211,153,0.6)]"></span>
+              <span data-i18n="pill">Construyendo productos reales, rápido.</span>
+            </div>
+
+            <h1 class="mt-5 text-4xl font-semibold tracking-tight md:text-5xl">
+              <span data-i18n="hero_title_1">Herramientas.</span>
+              <span class="text-indigo-300" data-i18n="hero_title_2">Productos.</span>
+              <span data-i18n="hero_title_3">Experiencias.</span>
+            </h1>
+
+            <p class="mt-4 max-w-xl text-base text-white/75 md:text-lg" data-i18n="hero_desc">
+              GaviraLabs es mi estudio personal: diseño y desarrollo productos web modernos con foco en rendimiento,
+              simplicidad y escalabilidad. Desde herramientas de productividad hasta proyectos creativos.
+            </p>
+
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a
+                href="#projects"
+                class="btn inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-white/10 hover:bg-white/90"
+                data-i18n="hero_btn_primary"
+              >
+                Explorar proyectos
+              </a>
+              <a
+                href="#contact"
+                class="btn inline-flex items-center justify-center rounded-xl bg-white/10 px-5 py-3 text-sm font-semibold text-white ring-1 ring-white/15 hover:bg-white/15"
+                data-i18n="hero_btn_secondary"
+              >
+                Contactar
+              </a>
+            </div>
+
+            <div class="mt-7 flex flex-wrap gap-3 text-xs text-white/60">
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Vercel</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Cloudflare</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Performance</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Security</span>
+            </div>
+          </div>
+
+          <!-- Live coding card -->
+          <div class="terminal rounded-2xl p-5 shadow-2xl shadow-indigo-500/10">
+            <div class="mb-4 flex items-center justify-between">
+              <div class="flex items-center gap-2" aria-hidden="true">
+                <span class="h-3 w-3 rounded-full bg-rose-400/90"></span>
+                <span class="h-3 w-3 rounded-full bg-amber-300/90"></span>
+                <span class="h-3 w-3 rounded-full bg-emerald-400/90"></span>
+              </div>
+              <div class="text-xs text-white/60" data-i18n="live_label">Live build</div>
+            </div>
+
+            <div class="rounded-xl bg-black/40 p-4 ring-1 ring-white/10">
+              <div class="mb-3 flex items-center justify-between text-xs text-white/60">
+                <span data-i18n="live_file">/apps/gaviralabs/landing.ts</span>
+                <span class="inline-flex items-center gap-2" aria-label="Status">
+                  <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                  <span data-i18n="live_status">deploying…</span>
+                </span>
+              </div>
+
+              <pre class="m-0 overflow-x-auto text-xs leading-relaxed"><code id="code-block" class="language-typescript"></code></pre>
+              <div class="mt-2 text-xs text-white/50">
+                <span data-i18n="live_hint">Escritura simulada para mostrar “live coding”.</span>
+                <span class="caret" aria-hidden="true"></span>
+              </div>
+            </div>
+
+            <div class="mt-4 grid gap-3 md:grid-cols-2">
+              <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
+                <div class="text-sm font-semibold" data-i18n="card1_title">Diseño limpio</div>
+                <div class="mt-1 text-xs text-white/70" data-i18n="card1_desc">Interfaces modernas, minimalistas y rápidas.</div>
+              </div>
+              <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
+                <div class="text-sm font-semibold" data-i18n="card2_title">Infra sólida</div>
+                <div class="mt-1 text-xs text-white/70" data-i18n="card2_desc">Seguridad y rendimiento por defecto.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-12 border-t border-white/10 pt-8 text-center text-xs text-white/50">
+          <span data-i18n="proof">Construido para escalar: hoy GaviraBoost, mañana más productos.</span>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="py-14 md:py-20">
+        <div class="flex items-end justify-between gap-6">
+          <div>
+            <h2 class="text-2xl font-semibold tracking-tight md:text-3xl" data-i18n="projects_title">Proyectos</h2>
+            <p class="mt-2 max-w-2xl text-white/70" data-i18n="projects_desc">
+              Productos independientes bajo una misma marca. Cada proyecto vive en su propio subdominio.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-2">
+          <!-- GaviraBoost -->
+          <article class="group rounded-2xl bg-white/5 p-6 ring-1 ring-white/10 transition hover:bg-white/7">
+            <div class="flex items-center justify-between">
+              <div class="text-lg font-semibold">GaviraBoost</div>
+              <span class="rounded-full bg-indigo-500/20 px-3 py-1 text-xs text-indigo-200 ring-1 ring-indigo-400/20">
+                Live
+              </span>
+            </div>
+            <p class="mt-3 text-sm text-white/75" data-i18n="boost_desc">
+              Herramienta para productividad y optimización de flujos. Rápida, simple y enfocada en resultados.
+            </p>
+
+            <div class="mt-5 flex flex-wrap gap-2 text-xs text-white/60">
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Automation</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Workflow</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Performance</span>
+            </div>
+
+            <div class="mt-6 flex gap-3">
+              <a
+                href="https://gaviraboost.gaviralabs.com"
+                class="btn inline-flex items-center justify-center rounded-xl bg-indigo-500/90 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500"
+                data-i18n="boost_btn"
+              >
+                Abrir GaviraBoost
+              </a>
+              <a
+                href="#contact"
+                class="btn inline-flex items-center justify-center rounded-xl bg-white/10 px-4 py-2 text-sm font-semibold text-white ring-1 ring-white/15 hover:bg-white/15"
+                data-i18n="boost_btn2"
+              >
+                Hablemos
+              </a>
+            </div>
+          </article>
+
+          <!-- Coming soon -->
+          <article class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
+            <div class="flex items-center justify-between">
+              <div class="text-lg font-semibold" data-i18n="next_title">Próximo producto</div>
+              <span class="rounded-full bg-white/10 px-3 py-1 text-xs text-white/70 ring-1 ring-white/10" data-i18n="next_tag">
+                Coming soon
+              </span>
+            </div>
+            <p class="mt-3 text-sm text-white/75" data-i18n="next_desc">
+              Nuevo proyecto en desarrollo. GaviraLabs crecerá con herramientas y productos independientes.
+            </p>
+
+            <div class="mt-5 rounded-xl bg-black/25 p-4 ring-1 ring-white/10">
+              <div class="text-xs text-white/60" data-i18n="next_hint">
+                Idea: tools.gaviralabs.com · studio.gaviralabs.com · assets.gaviralabs.com
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <a
+                href="#contact"
+                class="btn inline-flex items-center justify-center rounded-xl bg-white px-4 py-2 text-sm font-semibold text-slate-950 shadow-lg shadow-white/10 hover:bg-white/90"
+                data-i18n="next_btn"
+              >
+                Avísame cuando salga
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="py-14 md:py-20">
+        <div class="grid gap-10 md:grid-cols-2">
+          <div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
+            <h3 class="text-xl font-semibold" data-i18n="about_title">Sobre GaviraLabs</h3>
+            <p class="mt-3 text-white/75" data-i18n="about_desc">
+              GaviraLabs es un espacio para construir productos con visión a largo plazo: diseño limpio, código sólido,
+              experiencia rápida e infraestructura segura.
+            </p>
+            <ul class="mt-5 space-y-2 text-sm text-white/70">
+              <li>⚡ <span data-i18n="about_li1">Rendimiento como prioridad</span></li>
+              <li>🧩 <span data-i18n="about_li2">Arquitectura modular y escalable</span></li>
+              <li>🎨 <span data-i18n="about_li3">Estética minimal y moderna</span></li>
+              <li>🛡️ <span data-i18n="about_li4">Buenas prácticas de seguridad</span></li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
+            <h3 class="text-xl font-semibold" data-i18n="me_title">Sobre mí</h3>
+            <p class="mt-3 text-white/75" data-i18n="me_desc">
+              Soy desarrollador y creador digital. Construyo herramientas web útiles y productos listos para crecer, cuidando
+              cada detalle: diseño, rendimiento, UX e infraestructura.
+            </p>
+
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
+                <div class="text-sm font-semibold" data-i18n="me_card1">Producto</div>
+                <div class="mt-1 text-xs text-white/70" data-i18n="me_card1d">Idea → diseño → lanzamiento.</div>
+              </div>
+              <div class="rounded-xl bg-white/5 p-4 ring-1 ring-white/10">
+                <div class="text-sm font-semibold" data-i18n="me_card2">Ingeniería</div>
+                <div class="mt-1 text-xs text-white/70" data-i18n="me_card2d">Rápido, estable y mantenible.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="py-14 md:py-20">
+        <div class="rounded-2xl bg-white/5 p-8 ring-1 ring-white/10">
+          <div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+            <div>
+              <h2 class="text-2xl font-semibold tracking-tight md:text-3xl" data-i18n="contact_title">¿Construimos algo juntos?</h2>
+              <p class="mt-2 max-w-2xl text-white/70" data-i18n="contact_desc">
+                Si quieres colaborar, contratarme o lanzar un producto, escríbeme. Respondo rápido.
+              </p>
+            </div>
+
+            <a
+              href="mailto:gaviralabs@gmail.com?subject=GaviraLabs%20—%20Contacto"
+              class="btn inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-white/10 hover:bg-white/90"
+              data-i18n="contact_btn"
+            >
+              Contactar
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <footer class="border-t border-white/10 py-10 text-center text-xs text-white/55">
+        <div class="mx-auto max-w-6xl px-4">
+          <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <div>
+              © <span id="year"></span> GaviraLabs — Built for speed.
+              <span class="block mt-1 text-white/45">
+                Titular: Alejandro Gavira Garcia ·
+                <span data-i18n="footer_location">España</span> ·
+                <span data-i18n="footer_email">Email</span>:
+                <a class="underline hover:text-white" href="mailto:gaviralabs@gmail.com">gaviralabs@gmail.com</a>
+              </span>
+            </div>
+
+            <nav class="flex flex-wrap items-center justify-center gap-4" aria-label="Legal">
+              <a class="hover:text-white underline underline-offset-2" href="/aviso-legal.html" data-i18n="f_legal">Aviso legal</a>
+              <a class="hover:text-white underline underline-offset-2" href="/privacidad.html" data-i18n="f_privacy">Privacidad</a>
+              <a class="hover:text-white underline underline-offset-2" href="/cookies.html" data-i18n="f_cookies">Cookies</a>
+              <a class="hover:text-white underline underline-offset-2" href="/terminos.html" data-i18n="f_terms">Términos</a>
+              <a class="hover:text-white underline underline-offset-2" href="/contacto.html" data-i18n="f_contact">Contacto</a>
+              <a class="hover:text-white underline underline-offset-2" href="/security.html">Security</a>
+            </nav>
+          </div>
+
+          <div class="mt-4 text-[11px] text-white/45" data-i18n="footer_disclaimer">
+            Este sitio no usa analítica ni publicidad. Solo cookies técnicas (p. ej., idioma). Consulta la política de privacidad y cookies.
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <!-- Cookie banner (solo cookies técnicas) -->
+    <div id="cookie-banner" class="fixed bottom-4 left-4 right-4 z-50 hidden md:left-6 md:right-auto md:max-w-xl">
+      <div class="rounded-2xl bg-slate-950/85 p-4 ring-1 ring-white/15 backdrop-blur-xl shadow-2xl shadow-indigo-500/10">
+        <div class="flex items-start gap-3">
+          <div class="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(52,211,153,0.5)]"></div>
+          <div class="flex-1">
+            <div class="text-sm font-semibold" data-i18n="ck_title">Cookies técnicas</div>
+            <p class="mt-1 text-xs text-white/70" data-i18n="ck_desc">
+              Usamos solo cookies necesarias para que el sitio funcione (p. ej., recordar el idioma). No usamos analítica ni publicidad.
+            </p>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <button id="ck_accept" type="button" class="btn rounded-xl bg-white px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-white/90" data-i18n="ck_ok">
+                Entendido
+              </button>
+              <a href="/cookies.html" class="btn rounded-xl bg-white/10 px-4 py-2 text-xs font-semibold text-white ring-1 ring-white/15 hover:bg-white/15" data-i18n="ck_more">
+                Ver política
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // --- Cookies (solo técnicas) banner ---
+      const CK_KEY = "gaviralabs_cookies_v1";
+      function showCookieBannerIfNeeded() {
+        try {
+          const saved = localStorage.getItem(CK_KEY);
+          if (!saved) document.getElementById("cookie-banner").classList.remove("hidden");
+        } catch (e) {
+          document.getElementById("cookie-banner").classList.remove("hidden");
+        }
+      }
+      function acceptCookies() {
+        try { localStorage.setItem(CK_KEY, "accepted"); } catch (e) {}
+        const b = document.getElementById("cookie-banner");
+        if (b) b.classList.add("hidden");
+      }
+      document.getElementById("ck_accept")?.addEventListener("click", acceptCookies);
+      showCookieBannerIfNeeded();
+
+      // --- i18n content ---
+      const i18n = {
+        es: {
+          tagline: "Estudio de productos digitales",
+          nav_projects: "Proyectos",
+          nav_about: "Sobre mí",
+          nav_contact: "Contacto",
+          cta_header: "Ver proyectos",
+          pill: "Construyendo productos reales, rápido.",
+          hero_title_1: "Herramientas.",
+          hero_title_2: "Productos.",
+          hero_title_3: "Experiencias.",
+          hero_desc:
+            "GaviraLabs es mi estudio personal: diseño y desarrollo productos web modernos con foco en rendimiento, simplicidad y escalabilidad. Desde herramientas de productividad hasta proyectos creativos.",
+          hero_btn_primary: "Explorar proyectos",
+          hero_btn_secondary: "Contactar",
+          live_label: "Live build",
+          live_file: "/apps/gaviralabs/landing.ts",
+          live_status: "deploying…",
+          live_hint: "Escritura simulada para mostrar “live coding”.",
+          card1_title: "Diseño limpio",
+          card1_desc: "Interfaces modernas, minimalistas y rápidas.",
+          card2_title: "Infra sólida",
+          card2_desc: "Seguridad y rendimiento por defecto.",
+          proof: "Construido para escalar: hoy GaviraBoost, mañana más productos.",
+          projects_title: "Proyectos",
+          projects_desc:
+            "Productos independientes bajo una misma marca. Cada proyecto vive en su propio subdominio.",
+          boost_desc:
+            "Herramienta para productividad y optimización de flujos. Rápida, simple y enfocada en resultados.",
+          boost_btn: "Abrir GaviraBoost",
+          boost_btn2: "Hablemos",
+          next_title: "Próximo producto",
+          next_tag: "Próximamente",
+          next_desc:
+            "Nuevo proyecto en desarrollo. GaviraLabs crecerá con herramientas y productos independientes.",
+          next_hint: "Idea: tools.gaviralabs.com · studio.gaviralabs.com · assets.gaviralabs.com",
+          next_btn: "Avísame cuando salga",
+          about_title: "Sobre GaviraLabs",
+          about_desc:
+            "GaviraLabs es un espacio para construir productos con visión a largo plazo: diseño limpio, código sólido, experiencia rápida e infraestructura segura.",
+          about_li1: "Rendimiento como prioridad",
+          about_li2: "Arquitectura modular y escalable",
+          about_li3: "Estética minimal y moderna",
+          about_li4: "Buenas prácticas de seguridad",
+          me_title: "Sobre mí",
+          me_desc:
+            "Soy desarrollador y creador digital. Construyo herramientas web útiles y productos listos para crecer, cuidando cada detalle: diseño, rendimiento, UX e infraestructura.",
+          me_card1: "Producto",
+          me_card1d: "Idea → diseño → lanzamiento.",
+          me_card2: "Ingeniería",
+          me_card2d: "Rápido, estable y mantenible.",
+          contact_title: "¿Construimos algo juntos?",
+          contact_desc:
+            "Si quieres colaborar, contratarme o lanzar un producto, escríbeme. Respondo rápido.",
+          contact_btn: "Contactar",
+
+          // Footer legal links
+          f_legal: "Aviso legal",
+          f_privacy: "Privacidad",
+          f_cookies: "Cookies",
+          f_terms: "Términos",
+          f_contact: "Contacto",
+          footer_location: "España",
+          footer_email: "Email",
+          footer_disclaimer:
+            "Este sitio no usa analítica ni publicidad. Solo cookies técnicas (p. ej., idioma). Consulta la política de privacidad y cookies.",
+
+          // Cookie banner
+          ck_title: "Cookies técnicas",
+          ck_desc: "Usamos solo cookies necesarias para que el sitio funcione (p. ej., recordar el idioma). No usamos analítica ni publicidad.",
+          ck_ok: "Entendido",
+          ck_more: "Ver política",
+        },
+        en: {
+          tagline: "Digital product studio",
+          nav_projects: "Projects",
+          nav_about: "About",
+          nav_contact: "Contact",
+          cta_header: "View projects",
+          pill: "Shipping real products, fast.",
+          hero_title_1: "Tools.",
+          hero_title_2: "Products.",
+          hero_title_3: "Experiences.",
+          hero_desc:
+            "GaviraLabs is my personal studio: I design and build modern web products focused on performance, simplicity and scalability — from productivity tools to creative projects.",
+          hero_btn_primary: "Explore projects",
+          hero_btn_secondary: "Contact",
+          live_label: "Live build",
+          live_file: "/apps/gaviralabs/landing.ts",
+          live_status: "deploying…",
+          live_hint: "Simulated typing for a “live coding” feel.",
+          card1_title: "Clean design",
+          card1_desc: "Modern, minimal, fast interfaces.",
+          card2_title: "Solid infra",
+          card2_desc: "Security and performance by default.",
+          proof: "Built to scale: GaviraBoost today, more products tomorrow.",
+          projects_title: "Projects",
+          projects_desc: "Independent products under one brand. Each project lives on its own subdomain.",
+          boost_desc: "A productivity tool built to optimize workflows: fast, simple, results-driven.",
+          boost_btn: "Open GaviraBoost",
+          boost_btn2: "Let’s talk",
+          next_title: "Next product",
+          next_tag: "Coming soon",
+          next_desc: "A new project is in development. GaviraLabs will grow with independent tools and products.",
+          next_hint: "Idea: tools.gaviralabs.com · studio.gaviralabs.com · assets.gaviralabs.com",
+          next_btn: "Notify me",
+          about_title: "About GaviraLabs",
+          about_desc:
+            "GaviraLabs is a place to build long-term products: clean design, solid code, fast UX and secure infrastructure.",
+          about_li1: "Performance-first mindset",
+          about_li2: "Modular & scalable architecture",
+          about_li3: "Modern minimal aesthetic",
+          about_li4: "Security best practices",
+          me_title: "About me",
+          me_desc:
+            "I’m a developer and digital creator. I build useful web tools and scalable products — design, performance, UX and infrastructure.",
+          me_card1: "Product",
+          me_card1d: "Idea → design → launch.",
+          me_card2: "Engineering",
+          me_card2d: "Fast, stable, maintainable.",
+          contact_title: "Let’s build something",
+          contact_desc: "Want to collaborate, hire me, or ship a product? Send me a message.",
+          contact_btn: "Contact",
+
+          // Footer legal links
+          f_legal: "Legal notice",
+          f_privacy: "Privacy",
+          f_cookies: "Cookies",
+          f_terms: "Terms",
+          f_contact: "Contact",
+          footer_location: "Spain",
+          footer_email: "Email",
+          footer_disclaimer:
+            "No analytics or ads. Only essential cookies (e.g., language). See Privacy and Cookies policies.",
+
+          // Cookie banner
+          ck_title: "Essential cookies",
+          ck_desc: "We only use cookies required for the site to work (e.g., remembering language). No analytics or ads.",
+          ck_ok: "Got it",
+          ck_more: "View policy",
+        },
+      };
+
+      function setLang(lang) {
+        const dict = i18n[lang] || i18n.es;
+        document.documentElement.lang = lang === "en" ? "en" : "es";
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (dict[key]) el.textContent = dict[key];
+        });
+
+        // toggle styles
+        const esBtn = document.getElementById("lang-es");
+        const enBtn = document.getElementById("lang-en");
+        const active = "bg-white/10 text-white";
+        const inactive = "text-white/70 hover:text-white";
+        if (lang === "en") {
+          enBtn.className = `rounded-lg px-3 py-1 text-xs font-medium ${active}`;
+          esBtn.className = `rounded-lg px-3 py-1 text-xs font-medium ${inactive}`;
+        } else {
+          esBtn.className = `rounded-lg px-3 py-1 text-xs font-medium ${active}`;
+          enBtn.className = `rounded-lg px-3 py-1 text-xs font-medium ${inactive}`;
+        }
+
+        // persist
+        localStorage.setItem("gaviralabs_lang", lang);
+      }
+
+      document.getElementById("lang-es").addEventListener("click", () => setLang("es"));
+      document.getElementById("lang-en").addEventListener("click", () => setLang("en"));
+
+      // Load saved language
+      const saved = localStorage.getItem("gaviralabs_lang");
+      setLang(saved || "es");
+
+      // --- Live code typing (TypeScript) ---
+      const codeLines = [
+        "import { deploy, edgeCache } from 'gaviralabs/runtime';",
+        "",
+        "type Product = {",
+        "  name: string;",
+        "  url: string;",
+        "  status: 'live' | 'soon';",
+        "};",
+        "",
+        "const products: Product[] = [",
+        "  { name: 'GaviraBoost', url: 'https://gaviraboost.gaviralabs.com', status: 'live' },",
+        "  { name: 'Next Project', url: 'https://next.gaviralabs.com', status: 'soon' },",
+        "];",
+        "",
+        "export async function main() {",
+        "  edgeCache.enable({ tiered: true, tls: 'strict', hsts: true });",
+        "  await deploy({ brand: 'GaviraLabs', products });",
+        "}",
+        "",
+        "main();",
+      ];
+
+      const codeEl = document.getElementById("code-block");
+      let lineIdx = 0;
+      let charIdx = 0;
+      let current = "";
+
+      function tick() {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          // no typing animation
+          codeEl.textContent = codeLines.join("\n");
+          hljs.highlightElement(codeEl);
+          return;
+        }
+
+        if (lineIdx >= codeLines.length) {
+          // loop softly: restart after a pause
+          setTimeout(() => {
+            lineIdx = 0; charIdx = 0; current = "";
+            codeEl.textContent = "";
+            tick();
+          }, 1400);
+          return;
+        }
+
+        const line = codeLines[lineIdx];
+        if (charIdx <= line.length) {
+          current = codeLines.slice(0, lineIdx).join("\n") + (lineIdx ? "\n" : "") + line.slice(0, charIdx);
+          codeEl.textContent = current;
+          hljs.highlightElement(codeEl);
+          charIdx++;
+          setTimeout(tick, 18); // typing speed
+        } else {
+          // next line
+          lineIdx++;
+          charIdx = 0;
+          setTimeout(tick, 160);
+        }
+      }
+      tick();
+
+      // --- GSAP animations ---
+      gsap.registerPlugin(ScrollTrigger);
+
+      gsap.from("h1", { y: 14, opacity: 0, duration: 0.7, ease: "power2.out" });
+      gsap.from("[data-i18n='hero_desc']", { y: 10, opacity: 0, duration: 0.7, delay: 0.15, ease: "power2.out" });
+      gsap.from(".terminal", { y: 18, opacity: 0, duration: 0.8, delay: 0.1, ease: "power2.out" });
+
+      gsap.utils.toArray("#projects article, #about .rounded-2xl, #contact .rounded-2xl").forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: { trigger: el, start: "top 85%" },
+          y: 18,
+          opacity: 0,
+          duration: 0.7,
+          ease: "power2.out",
+        });
+      });
+    </script>
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Alejandro Gavira Garcia",
+      "url": "https://www.gaviralabs.com/",
+      "email": "mailto:gaviralabs@gmail.com",
+      "brand": {
+        "@type": "Brand",
+        "name": "GaviraLabs"
+      }
+    }
+    </script>
+  </body>
+</html>
