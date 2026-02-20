@@ -3,29 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cómo crear anuncios optimizados para vender más en marketplaces | GaviraBoost</title>
+    <title>Guía definitiva: cómo vender cualquier producto más rápido (físico o digital) | GaviraBoost</title>
     <meta
       name="description"
-      content="Guía práctica para crear anuncios optimizados que vendan más en marketplaces online. Aprende a mejorar título, descripción y conversión, y reutiliza tu anuncio en varias plataformas."
+      content="Guía práctica para vender más rápido cualquier producto (portátil, patinete, ropa, electrónica o productos digitales). Aprende a crear anuncios que convierten y reutilízalos en varios marketplaces."
     />
     <meta name="robots" content="index,follow" />
     <meta name="theme-color" content="#0b0f19" />
-    <link rel="canonical" href="https://www.gaviralabs.com/crear-anuncios-para-vender-mas.html" />
     <link rel="icon" href="/favicon.svg" />
+    <link rel="canonical" href="https://www.gaviralabs.com/crear-anuncios-para-vender-mas.html" />
 
     <!-- Tailwind (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Open Graph / Twitter -->
-    <meta property="og:title" content="Anuncios optimizados para vender más | GaviraBoost" />
-    <meta
-      property="og:description"
-      content="Estructura tu anuncio para convertir mejor y reutilízalo en múltiples marketplaces. Guía + sistema recomendado."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.gaviralabs.com/crear-anuncios-para-vender-mas.html" />
-    <meta property="og:image" content="https://www.gaviralabs.com/assets/og.jpg" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <!-- GSAP animations -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
     <style>
       html { scroll-behavior: smooth; }
@@ -43,10 +36,11 @@
         mask-image: radial-gradient(ellipse at top, rgba(0,0,0,1), rgba(0,0,0,0.1) 60%, rgba(0,0,0,0) 75%);
         opacity: 0.35;
       }
-      .video-overlay {
-        background: radial-gradient(1200px 650px at 25% 20%, rgba(99, 102, 241, 0.35), transparent 55%),
-                    radial-gradient(900px 520px at 75% 35%, rgba(34, 211, 238, 0.22), transparent 60%),
-                    linear-gradient(to bottom, rgba(11, 15, 25, 0.75), rgba(11, 15, 25, 0.95));
+      .bg-overlay {
+        background:
+          radial-gradient(1200px 650px at 25% 20%, rgba(99, 102, 241, 0.35), transparent 55%),
+          radial-gradient(900px 520px at 75% 35%, rgba(34, 211, 238, 0.22), transparent 60%),
+          linear-gradient(to bottom, rgba(11, 15, 25, 0.75), rgba(11, 15, 25, 0.95));
       }
       .glass {
         background: rgba(255, 255, 255, 0.06);
@@ -62,18 +56,19 @@
       }
     </style>
 
-    <!-- Schema: Article + SoftwareApplication -->
+    <!-- Schema: Article + FAQPage + SoftwareApplication -->
     <script type="application/ld+json">
       {
         "@context":"https://schema.org",
         "@type":"Article",
-        "headline":"Cómo crear anuncios optimizados para vender más en marketplaces",
-        "description":"Guía práctica para mejorar títulos, descripciones y conversión, y reutilizar tu anuncio en varias plataformas.",
+        "headline":"Guía definitiva: cómo vender cualquier producto más rápido (físico o digital)",
+        "description":"Consejos prácticos para vender más rápido cualquier producto con anuncios que convierten y reutilizables.",
         "author":{"@type":"Person","name":"Alejandro Gavira Garcia"},
         "publisher":{"@type":"Organization","name":"GaviraLabs","url":"https://www.gaviralabs.com"},
         "mainEntityOfPage":{"@type":"WebPage","@id":"https://www.gaviralabs.com/crear-anuncios-para-vender-mas.html"}
       }
     </script>
+    <script type="application/ld+json" id="faq-schema"></script>
     <script type="application/ld+json">
       {
         "@context":"https://schema.org",
@@ -88,28 +83,13 @@
   </head>
 
   <body class="bg-slate-950 text-white">
-    <!-- Background -->
+    <!-- Background (NO VIDEO) -->
     <div class="fixed inset-0 -z-10">
-      <video
-        class="h-full w-full object-cover opacity-60"
-        autoplay
-        muted
-        playsinline
-        loop
-        poster="/assets/hero-poster.jpg"
-      >
-        <source src="/assets/hero.webm" type="video/webm" />
-        <source src="/assets/hero.mp4" type="video/mp4" />
-      </video>
-      <div class="absolute inset-0 video-overlay"></div>
+      <div class="absolute inset-0 bg-overlay"></div>
       <div class="absolute inset-0 grid-bg"></div>
     </div>
 
     <!-- Header -->
-    <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-xl focus:bg-white focus:px-4 focus:py-2 focus:text-slate-950">
-      Saltar al contenido
-    </a>
-
     <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/30 backdrop-blur-xl">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <a href="/" class="flex items-center gap-2">
@@ -122,220 +102,241 @@
           </span>
           <div class="leading-tight">
             <div class="font-semibold tracking-tight">GaviraLabs</div>
-            <div class="text-xs text-white/60">Guía · Marketplace Ads</div>
+            <div class="text-xs text-white/60" data-i18n="tagline">Guía para vender mejor</div>
           </div>
         </a>
 
-        <nav class="hidden items-center gap-6 md:flex" aria-label="Navegación">
-          <a href="#pasos" class="text-sm text-white/80 hover:text-white">Pasos</a>
-          <a href="#plantilla" class="text-sm text-white/80 hover:text-white">Plantilla</a>
-          <a href="#faq" class="text-sm text-white/80 hover:text-white">FAQ</a>
+        <nav class="hidden items-center gap-6 md:flex">
+          <a href="#pasos" class="text-sm text-white/80 hover:text-white" data-i18n="nav_steps">Pasos</a>
+          <a href="#ejemplos" class="text-sm text-white/80 hover:text-white" data-i18n="nav_examples">Ejemplos</a>
+          <a href="#plantilla" class="text-sm text-white/80 hover:text-white" data-i18n="nav_template">Plantilla</a>
+          <a href="#faq" class="text-sm text-white/80 hover:text-white" data-i18n="nav_faq">FAQ</a>
         </nav>
 
-        <a
-          href="https://gaviraboost.gaviralabs.com"
-          class="btn inline-flex items-center justify-center rounded-xl bg-indigo-500/90 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500"
-        >
-          Abrir GaviraBoost
-        </a>
+        <div class="flex items-center gap-2">
+          <!-- Language toggle -->
+          <div class="flex rounded-xl bg-white/5 p-1 ring-1 ring-white/10">
+            <button id="lang-es" class="rounded-lg px-3 py-1 text-xs font-medium text-white bg-white/10" aria-label="Cambiar a Español">ES</button>
+            <button id="lang-en" class="rounded-lg px-3 py-1 text-xs font-medium text-white/70 hover:text-white" aria-label="Switch to English">EN</button>
+          </div>
+
+          <a
+            href="https://gaviraboost.gaviralabs.com"
+            class="btn hidden rounded-xl bg-indigo-500/90 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500 md:inline-flex"
+            data-i18n="cta"
+          >
+            Abrir GaviraBoost
+          </a>
+        </div>
       </div>
     </header>
 
-    <main id="contenido" class="mx-auto max-w-6xl px-4">
+    <main class="mx-auto max-w-6xl px-4">
       <!-- Hero -->
       <section class="relative py-14 md:py-20">
         <div class="grid items-start gap-10 md:grid-cols-2 md:items-center">
           <div>
             <div class="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs text-white/75 ring-1 ring-white/10">
               <span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(52,211,153,0.6)]"></span>
-              <span>Optimiza tu anuncio · Reutilízalo · Vende más</span>
+              <span data-i18n="pill">Guía práctica, sin humo.</span>
             </div>
 
             <h1 class="mt-5 text-4xl font-semibold tracking-tight md:text-5xl">
-              Cómo crear <span class="text-indigo-300">anuncios optimizados</span><br />
-              para vender más en marketplaces
+              <span data-i18n="h1_1">Vende más rápido</span>
+              <span class="text-indigo-300" data-i18n="h1_2">cualquier producto</span>
+              <span data-i18n="h1_3">con anuncios que convierten.</span>
             </h1>
 
-            <p class="mt-4 max-w-xl text-base text-white/75 md:text-lg">
-              Un buen anuncio vende por ti. Esta guía te da una estructura clara para escribir títulos y descripciones que convierten,
-              y luego <strong>reutilizar el anuncio</strong> en distintas plataformas publicándolo manualmente.
+            <p class="mt-4 max-w-xl text-base text-white/75 md:text-lg" data-i18n="intro">
+              Portátil, patinete, ropa, electrónica… o un producto digital. La diferencia no es “publicar más”: es publicar mejor.
+              Aquí tienes una estructura simple para crear anuncios que se entienden en 10 segundos y generan mensajes.
             </p>
 
             <div class="mt-7 flex flex-wrap gap-3">
-              <a
-                href="#pasos"
-                class="btn inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-white/10 hover:bg-white/90"
-              >
-                Ver la guía
+              <a href="#pasos" class="btn inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-white/10 hover:bg-white/90" data-i18n="btn_read">
+                Empezar la guía
               </a>
-              <a
-                href="#plantilla"
-                class="btn inline-flex items-center justify-center rounded-xl bg-white/10 px-5 py-3 text-sm font-semibold text-white ring-1 ring-white/15 hover:bg-white/15"
-              >
+              <a href="#plantilla" class="btn inline-flex items-center justify-center rounded-xl bg-white/10 px-5 py-3 text-sm font-semibold text-white ring-1 ring-white/15 hover:bg-white/15" data-i18n="btn_tpl">
                 Copiar plantilla
               </a>
             </div>
 
             <div class="mt-7 flex flex-wrap gap-3 text-xs text-white/60">
-              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Título</span>
-              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Descripción</span>
-              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Fotos</span>
-              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Precio</span>
-              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">CTA</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10" data-i18n="chip1">Título</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10" data-i18n="chip2">Descripción</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10" data-i18n="chip3">Fotos</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10" data-i18n="chip4">Precio</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10" data-i18n="chip5">CTA</span>
             </div>
           </div>
 
-          <!-- Right card -->
+          <!-- Side card -->
           <aside class="glass rounded-2xl p-6 shadow-2xl shadow-indigo-500/10">
             <div class="flex items-center justify-between">
-              <div class="text-sm font-semibold">Checklist rápido</div>
-              <span class="rounded-full bg-indigo-500/20 px-3 py-1 text-xs text-indigo-200 ring-1 ring-indigo-400/20">
-                60s
+              <div class="text-sm font-semibold" data-i18n="card_title">Checklist en 60s</div>
+              <span class="rounded-full bg-indigo-500/20 px-3 py-1 text-xs text-indigo-200 ring-1 ring-indigo-400/20" data-i18n="card_tag">
+                rápido
               </span>
             </div>
+
             <ul class="mt-4 space-y-3 text-sm text-white/75">
-              <li>✅ Título con palabra clave + estado + modelo</li>
-              <li>✅ Beneficio principal en la primera frase</li>
-              <li>✅ Detalles claros (medidas/compatibilidad)</li>
-              <li>✅ Transparencia (defectos/uso real)</li>
-              <li>✅ CTA simple: “Si te interesa, escríbeme”</li>
+              <li data-i18n="chk1">✅ Título con “qué es + modelo + estado”</li>
+              <li data-i18n="chk2">✅ Primera frase: beneficio + confianza</li>
+              <li data-i18n="chk3">✅ Detalles claros (y defectos si los hay)</li>
+              <li data-i18n="chk4">✅ Fotos nítidas (mínimo 6)</li>
+              <li data-i18n="chk5">✅ Precio con lógica + CTA simple</li>
             </ul>
 
             <div class="mt-6 rounded-xl bg-black/25 p-4 ring-1 ring-white/10">
-              <div class="text-xs text-white/70">
-                <strong>Tip:</strong> si vendes en varias plataformas, usa el mismo anuncio base y ajusta solo el formato si hace falta.
+              <div class="text-xs text-white/70" data-i18n="tip">
+                Tip: crea un anuncio “base” y reutilízalo. Publica manualmente donde quieras y ahorras tiempo.
               </div>
             </div>
 
             <div class="mt-6">
-              <a
-                href="https://gaviraboost.gaviralabs.com"
-                class="btn inline-flex w-full items-center justify-center rounded-xl bg-indigo-500/90 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500"
-              >
-                Crear anuncio con Boost
+              <a href="https://gaviraboost.gaviralabs.com" class="btn inline-flex w-full items-center justify-center rounded-xl bg-indigo-500/90 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500" data-i18n="cta_card">
+                Crear anuncio con GaviraBoost
               </a>
-              <p class="mt-2 text-xs text-white/55">
-                Crea el anuncio en Boost y publícalo manualmente donde quieras.
-              </p>
+              <p class="mt-2 text-xs text-white/55" data-i18n="cta_note">Crea el anuncio aquí y pégalo donde quieras.</p>
             </div>
           </aside>
-        </div>
-
-        <div class="mt-12 border-t border-white/10 pt-8 text-center text-xs text-white/50">
-          <span>
-            Nota: menciones a marketplaces son ejemplos descriptivos; no hay afiliación ni integración oficial.
-          </span>
         </div>
       </section>
 
       <!-- Steps -->
       <section id="pasos" class="py-14 md:py-20">
-        <div class="max-w-3xl">
-          <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">Guía: estructura de un anuncio que vende</h2>
-          <p class="mt-2 text-white/70">
-            Esta estructura funciona tanto para productos digitales como para físicos. Lo importante es claridad, confianza y velocidad.
+        <div>
+          <h2 class="text-2xl font-semibold tracking-tight md:text-3xl" data-i18n="steps_title">Los 7 pasos para vender más rápido</h2>
+          <p class="mt-2 max-w-3xl text-white/70" data-i18n="steps_desc">
+            Esto funciona para segunda mano y para productos digitales. Es una fórmula simple: claridad + confianza + facilidad.
           </p>
         </div>
 
         <div class="mt-8 grid gap-5 md:grid-cols-2">
           <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
-            <h3 class="text-lg font-semibold">1) Título optimizado</h3>
-            <p class="mt-2 text-sm text-white/75">
-              Usa: <strong>qué es + marca/modelo + estado + detalle clave</strong>.
-              Evita títulos genéricos. Piensa en lo que la gente buscaría.
+            <h3 class="text-lg font-semibold" data-i18n="s1_t">1) Título que se entiende en 2 segundos</h3>
+            <p class="mt-2 text-sm text-white/75" data-i18n="s1_d">
+              Usa este orden: qué es + marca/modelo + detalle clave + estado. Si el título es genérico, te saltan.
             </p>
             <div class="mt-4 rounded-xl bg-black/25 p-4 ring-1 ring-white/10">
-              <p class="text-xs text-white/70">
-                Ejemplo: “Portátil Lenovo ThinkPad T480 · i5 · 16GB RAM · Buen estado”
-              </p>
+              <p class="text-xs text-white/70" data-i18n="s1_ex">Ejemplo: “Patinete Xiaomi M365 · batería ok · buen estado”</p>
             </div>
           </article>
 
           <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
-            <h3 class="text-lg font-semibold">2) Primera frase = gancho</h3>
-            <p class="mt-2 text-sm text-white/75">
-              La primera frase decide si el usuario sigue leyendo. Empieza por el beneficio y la confianza.
+            <h3 class="text-lg font-semibold" data-i18n="s2_t">2) Primera frase = gancho</h3>
+            <p class="mt-2 text-sm text-white/75" data-i18n="s2_d">
+              Beneficio + confianza. La gente escanea. Si la primera frase es mala, no hay segunda oportunidad.
             </p>
             <div class="mt-4 rounded-xl bg-black/25 p-4 ring-1 ring-white/10">
-              <p class="text-xs text-white/70">
-                “Funciona perfecto, batería en buen estado y listo para usar desde el primer día.”
-              </p>
+              <p class="text-xs text-white/70" data-i18n="s2_ex">“Funciona perfecto, listo para usar hoy. Fotos reales.”</p>
             </div>
           </article>
 
           <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
-            <h3 class="text-lg font-semibold">3) Detalles claros y honestos</h3>
-            <p class="mt-2 text-sm text-white/75">
-              Lista lo que importa: compatibilidad, medidas, años de uso, accesorios incluidos. Y si hay defectos, dilo.
-              La honestidad reduce regateos y devoluciones.
+            <h3 class="text-lg font-semibold" data-i18n="s3_t">3) Descripción corta pero completa</h3>
+            <p class="mt-2 text-sm text-white/75" data-i18n="s3_d">
+              Estructura por bloques: estado, incluye, motivo de venta, entrega/envío, precio. Sin párrafos eternos.
             </p>
           </article>
 
           <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
-            <h3 class="text-lg font-semibold">4) Fotos y prueba</h3>
-            <p class="mt-2 text-sm text-white/75">
-              Fotos nítidas + una foto “prueba” (pantalla encendida, número de serie tapado parcialmente, etc.).
-              Mejor pocas buenas que muchas malas.
+            <h3 class="text-lg font-semibold" data-i18n="s4_t">4) Fotos que generan confianza</h3>
+            <p class="mt-2 text-sm text-white/75" data-i18n="s4_d">
+              Luz natural, fondo limpio, varias perspectivas y detalle de lo “importante”. Si hay defecto, foto también.
             </p>
           </article>
 
           <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
-            <h3 class="text-lg font-semibold">5) Precio con lógica</h3>
-            <p class="mt-2 text-sm text-white/75">
-              Si el precio está por encima del mercado, justifícalo (estado, extras, garantía, urgencia).
-              Si está por debajo, dilo como ventaja (“precio para vender rápido”).
+            <h3 class="text-lg font-semibold" data-i18n="s5_t">5) Precio con lógica (y sin miedo)</h3>
+            <p class="mt-2 text-sm text-white/75" data-i18n="s5_d">
+              Mira anuncios similares y decide: vender rápido (precio competitivo) o maximizar (más alto pero justificando).
             </p>
           </article>
 
           <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
-            <h3 class="text-lg font-semibold">6) CTA simple</h3>
-            <p class="mt-2 text-sm text-white/75">
-              Una llamada a la acción clara aumenta mensajes: “Si te interesa, escríbeme y te respondo rápido.”
+            <h3 class="text-lg font-semibold" data-i18n="s6_t">6) CTA simple (para que te escriban)</h3>
+            <p class="mt-2 text-sm text-white/75" data-i18n="s6_d">
+              “Si te interesa, escríbeme y respondo rápido.” Parece tonto, pero sube mensajes.
+            </p>
+          </article>
+
+          <article class="glass rounded-2xl p-6 ring-1 ring-white/10 md:col-span-2">
+            <h3 class="text-lg font-semibold" data-i18n="s7_t">7) Reutiliza el anuncio en varias plataformas (sin repetir trabajo)</h3>
+            <p class="mt-2 text-sm text-white/75" data-i18n="s7_d">
+              Crea un anuncio base y publícalo manualmente donde quieras. Puedes usar marketplaces como Vinted, Wallapop, eBay o Milanuncios como ejemplo.
+              Lo importante es: un anuncio excelente y consistente.
             </p>
           </article>
         </div>
 
         <div class="mt-10 glass rounded-2xl p-7 ring-1 ring-white/10">
-          <h3 class="text-lg font-semibold">Publicar en varios marketplaces (sin repetir trabajo)</h3>
-          <p class="mt-2 text-sm text-white/75">
-            Crea el anuncio base con esta estructura y publícalo manualmente en la plataforma que prefieras.
-            Puedes usar marketplaces como <strong>Vinted, Wallapop, Milanuncios o eBay</strong> como ejemplos habituales.
-            Lo importante es: <strong>un anuncio excelente reutilizable</strong>.
+          <h3 class="text-lg font-semibold" data-i18n="boost_box_t">¿Quieres hacerlo en 2 minutos?</h3>
+          <p class="mt-2 text-sm text-white/75" data-i18n="boost_box_d">
+            GaviraBoost te da una estructura lista para rellenar (título + descripción + checklist) y te deja el texto limpio para copiar y pegar.
           </p>
           <div class="mt-5 flex flex-wrap gap-3">
-            <a
-              href="https://gaviraboost.gaviralabs.com"
-              class="btn inline-flex items-center justify-center rounded-xl bg-indigo-500/90 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500"
-            >
-              Crear anuncio en GaviraBoost
+            <a href="https://gaviraboost.gaviralabs.com" class="btn inline-flex items-center justify-center rounded-xl bg-indigo-500/90 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500" data-i18n="boost_box_cta">
+              Abrir GaviraBoost
             </a>
-            <a
-              href="#faq"
-              class="btn inline-flex items-center justify-center rounded-xl bg-white/10 px-5 py-3 text-sm font-semibold text-white ring-1 ring-white/15 hover:bg-white/15"
-            >
-              Ver preguntas frecuentes
+            <a href="#plantilla" class="btn inline-flex items-center justify-center rounded-xl bg-white/10 px-5 py-3 text-sm font-semibold text-white ring-1 ring-white/15 hover:bg-white/15" data-i18n="boost_box_cta2">
+              Ver plantilla
             </a>
           </div>
         </div>
       </section>
 
+      <!-- Examples -->
+      <section id="ejemplos" class="py-14 md:py-20">
+        <div>
+          <h2 class="text-2xl font-semibold tracking-tight md:text-3xl" data-i18n="ex_title">Ejemplos rápidos (según producto)</h2>
+          <p class="mt-2 max-w-3xl text-white/70" data-i18n="ex_desc">
+            Copia la idea. Ajusta los detalles. Mantén la estructura.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-2">
+          <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
+            <h3 class="text-lg font-semibold" data-i18n="ex1_t">Portátil</h3>
+            <p class="mt-2 text-sm text-white/75" data-i18n="ex1_d">Di lo que importa: modelo, RAM, SSD, batería, estado, cargador. Y fotos de la pantalla encendida.</p>
+            <div class="mt-4 rounded-xl bg-black/25 p-4 ring-1 ring-white/10">
+              <p class="text-xs text-white/70" data-i18n="ex1_ex">Título: “Lenovo ThinkPad T480 · i5 · 16GB RAM · 512GB SSD”</p>
+            </div>
+          </article>
+
+          <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
+            <h3 class="text-lg font-semibold" data-i18n="ex2_t">Patinete</h3>
+            <p class="mt-2 text-sm text-white/75" data-i18n="ex2_d">Batería, km aproximados, ruedas/frenos, si tiene factura, y si incluye cargador.</p>
+            <div class="mt-4 rounded-xl bg-black/25 p-4 ring-1 ring-white/10">
+              <p class="text-xs text-white/70" data-i18n="ex2_ex">Título: “Xiaomi M365 · batería ok · ruedas nuevas · buen estado”</p>
+            </div>
+          </article>
+
+          <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
+            <h3 class="text-lg font-semibold" data-i18n="ex3_t">Ropa</h3>
+            <p class="mt-2 text-sm text-white/75" data-i18n="ex3_d">Talla, medidas reales, estado, marca, y fotos con buena luz. Evita filtros raros.</p>
+          </article>
+
+          <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
+            <h3 class="text-lg font-semibold" data-i18n="ex4_t">Producto digital</h3>
+            <p class="mt-2 text-sm text-white/75" data-i18n="ex4_d">Promete un resultado claro: qué incluye, para quién es, y cómo se entrega. Menos humo, más concreto.</p>
+          </article>
+        </div>
+      </section>
+
       <!-- Template -->
       <section id="plantilla" class="py-14 md:py-20">
-        <div class="max-w-3xl">
-          <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">Plantilla lista para copiar</h2>
-          <p class="mt-2 text-white/70">
-            Copia esto, rellena campos y tendrás un anuncio estructurado. Ideal para reutilizar en varias plataformas.
+        <div>
+          <h2 class="text-2xl font-semibold tracking-tight md:text-3xl" data-i18n="tpl_title">Plantilla lista para copiar</h2>
+          <p class="mt-2 max-w-3xl text-white/70" data-i18n="tpl_desc">
+            Rellena campos y tendrás un anuncio estructurado. Ideal para reutilizar en varias plataformas.
           </p>
         </div>
 
         <div class="mt-8 glass rounded-2xl p-6 ring-1 ring-white/10">
           <div class="flex items-center justify-between gap-4">
-            <div class="text-sm font-semibold">Formato recomendado</div>
-            <button
-              class="btn rounded-xl bg-white/10 px-4 py-2 text-xs font-semibold text-white ring-1 ring-white/15 hover:bg-white/15"
-              onclick="copyTemplate()"
-              type="button"
-            >
+            <div class="text-sm font-semibold" data-i18n="tpl_box_t">Formato recomendado</div>
+            <button class="btn rounded-xl bg-white/10 px-4 py-2 text-xs font-semibold text-white ring-1 ring-white/15 hover:bg-white/15" onclick="copyTemplate()" type="button" data-i18n="tpl_copy">
               Copiar plantilla
             </button>
           </div>
@@ -343,69 +344,66 @@
           <pre class="mt-4 overflow-x-auto rounded-xl bg-black/40 p-4 text-xs leading-relaxed ring-1 ring-white/10"><code id="tpl">📌 TÍTULO
 [Qué vendes] + [Marca/Modelo] + [Estado] + [Detalle clave]
 
-✅ DESCRIPCIÓN (1ª frase: beneficio)
-- Funciona/estado general:
+✅ DESCRIPCIÓN (primera frase: beneficio + confianza)
+- Estado general:
 - Qué incluye:
 - Motivo de venta:
-- Envío/entrega:
+- Entrega / envío:
 - Precio y negociación:
 - CTA: “Si te interesa, escríbeme y respondo rápido.”</code></pre>
 
-          <p class="mt-3 text-xs text-white/55">
-            Consejo: adapta una línea según la plataforma, pero mantén el anuncio base.
+          <p class="mt-3 text-xs text-white/55" data-i18n="tpl_note">
+            Consejo: ajusta una línea según la plataforma, pero mantén el anuncio base.
           </p>
         </div>
       </section>
 
       <!-- FAQ -->
       <section id="faq" class="py-14 md:py-20">
-        <div class="max-w-3xl">
-          <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">FAQ</h2>
-          <p class="mt-2 text-white/70">Respuestas claras para dudas típicas (y también ayuda al SEO).</p>
+        <div>
+          <h2 class="text-2xl font-semibold tracking-tight md:text-3xl" data-i18n="faq_title">FAQ</h2>
+          <p class="mt-2 max-w-3xl text-white/70" data-i18n="faq_desc">Respuestas rápidas (y ayuda al SEO).</p>
         </div>
 
         <div class="mt-8 space-y-3">
           <details class="glass rounded-2xl p-5 ring-1 ring-white/10">
-            <summary class="cursor-pointer font-semibold">¿Es legal mencionar Vinted, Wallapop, eBay o Milanuncios?</summary>
-            <p class="mt-3 text-sm text-white/75">
-              Sí, como referencia descriptiva. Lo que evitamos es sugerir afiliación, integración oficial o automatización contra normas.
-              Aquí hablamos de crear un anuncio y publicarlo manualmente.
+            <summary class="cursor-pointer font-semibold" data-i18n="q1">¿Es legal mencionar Vinted, Wallapop, eBay o Milanuncios?</summary>
+            <p class="mt-3 text-sm text-white/75" data-i18n="a1">
+              Sí, como referencia descriptiva. No hay afiliación ni integración oficial. Aquí hablamos de crear el anuncio y publicarlo manualmente.
             </p>
           </details>
 
           <details class="glass rounded-2xl p-5 ring-1 ring-white/10">
-            <summary class="cursor-pointer font-semibold">¿GaviraBoost publica automáticamente en esas plataformas?</summary>
-            <p class="mt-3 text-sm text-white/75">
+            <summary class="cursor-pointer font-semibold" data-i18n="q2">¿GaviraBoost publica automáticamente en esas plataformas?</summary>
+            <p class="mt-3 text-sm text-white/75" data-i18n="a2">
               No. GaviraBoost te ayuda a crear el anuncio (estructura, texto, claridad) y luego tú lo publicas manualmente donde quieras.
-              Eso es más estable, legal y sostenible.
             </p>
           </details>
 
           <details class="glass rounded-2xl p-5 ring-1 ring-white/10">
-            <summary class="cursor-pointer font-semibold">¿Cuánto tarda en posicionar en Google?</summary>
-            <p class="mt-3 text-sm text-white/75">
-              Si ya tienes Search Console y sitemap bien, Google puede indexar en 24–72h.
-              El posicionamiento real llega con semanas de contenido útil y enlaces.
+            <summary class="cursor-pointer font-semibold" data-i18n="q3">¿Qué tipo de productos funciona mejor?</summary>
+            <p class="mt-3 text-sm text-white/75" data-i18n="a3">
+              Los que se entienden rápido: modelos claros, fotos buenas y descripción honesta. Esto aplica a físicos y digitales.
+            </p>
+          </details>
+
+          <details class="glass rounded-2xl p-5 ring-1 ring-white/10">
+            <summary class="cursor-pointer font-semibold" data-i18n="q4">¿Cómo consigo mensajes más rápido?</summary>
+            <p class="mt-3 text-sm text-white/75" data-i18n="a4">
+              Mejora título + primera frase + fotos. Y termina siempre con una CTA simple. Es lo que más mueve la aguja.
             </p>
           </details>
         </div>
 
         <div class="mt-10 text-center">
-          <a
-            href="https://gaviraboost.gaviralabs.com"
-            class="btn inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-white/10 hover:bg-white/90"
-          >
+          <a href="https://gaviraboost.gaviralabs.com" class="btn inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-white/10 hover:bg-white/90" data-i18n="faq_cta">
             Entrar a GaviraBoost
           </a>
         </div>
-      </section>
 
-      <!-- Legal note -->
-      <section class="pb-16">
-        <div class="glass rounded-2xl p-6 text-xs text-white/55 ring-1 ring-white/10">
-          <p>
-            Vinted, Wallapop, eBay, Milanuncios y otras marcas mencionadas pertenecen a sus respectivos titulares.
-            No existe afiliación oficial ni integración directa. El usuario es responsable de publicar manualmente su anuncio en cada plataforma.
+        <div class="mt-10 glass rounded-2xl p-6 text-xs text-white/55 ring-1 ring-white/10">
+          <p data-i18n="legal_note">
+            Vinted, Wallapop, eBay, Milanuncios y otras marcas mencionadas pertenecen a sus respectivos titulares. No existe afiliación oficial ni integración directa. El usuario es responsable de publicar manualmente su anuncio en cada plataforma.
           </p>
         </div>
       </section>
@@ -413,26 +411,278 @@
       <footer class="border-t border-white/10 py-10 text-center text-xs text-white/55">
         <div>© <span id="year"></span> GaviraLabs — Built for speed.</div>
         <div class="mt-3 flex flex-wrap justify-center gap-4">
-          <a class="underline hover:text-white" href="/aviso-legal.html">Aviso legal</a>
-          <a class="underline hover:text-white" href="/privacidad.html">Privacidad</a>
-          <a class="underline hover:text-white" href="/cookies.html">Cookies</a>
-          <a class="underline hover:text-white" href="/terminos.html">Términos</a>
-          <a class="underline hover:text-white" href="/security.html">Security</a>
-          <a class="underline hover:text-white" href="/contacto.html">Contacto</a>
+          <a class="underline hover:text-white" href="/aviso-legal.html" data-i18n="f_legal">Aviso legal</a>
+          <a class="underline hover:text-white" href="/privacidad.html" data-i18n="f_priv">Privacidad</a>
+          <a class="underline hover:text-white" href="/cookies.html" data-i18n="f_cookies">Cookies</a>
+          <a class="underline hover:text-white" href="/terminos.html" data-i18n="f_terms">Términos</a>
+          <a class="underline hover:text-white" href="/security.html" data-i18n="f_sec">Security</a>
+          <a class="underline hover:text-white" href="/contacto.html" data-i18n="f_contact">Contacto</a>
         </div>
       </footer>
     </main>
 
     <script>
+      // Footer year
       document.getElementById("year").textContent = new Date().getFullYear();
 
+      // Copy template
       function copyTemplate() {
         const text = document.getElementById("tpl").innerText;
-        navigator.clipboard.writeText(text).then(() => {
-          // tiny feedback without changing design
-          alert("Plantilla copiada ✅");
-        });
+        navigator.clipboard.writeText(text).then(() => alert("Plantilla copiada ✅"));
       }
+
+      // --- i18n content ---
+      const i18n = {
+        es: {
+          tagline: "Guía para vender mejor",
+          nav_steps: "Pasos",
+          nav_examples: "Ejemplos",
+          nav_template: "Plantilla",
+          nav_faq: "FAQ",
+          cta: "Abrir GaviraBoost",
+          pill: "Guía práctica, sin humo.",
+          h1_1: "Vende más rápido",
+          h1_2: "cualquier producto",
+          h1_3: "con anuncios que convierten.",
+          intro:
+            "Portátil, patinete, ropa, electrónica… o un producto digital. La diferencia no es “publicar más”: es publicar mejor. Aquí tienes una estructura simple para crear anuncios que se entienden en 10 segundos y generan mensajes.",
+          btn_read: "Empezar la guía",
+          btn_tpl: "Copiar plantilla",
+          chip1: "Título",
+          chip2: "Descripción",
+          chip3: "Fotos",
+          chip4: "Precio",
+          chip5: "CTA",
+          card_title: "Checklist en 60s",
+          card_tag: "rápido",
+          chk1: "✅ Título con “qué es + modelo + estado”",
+          chk2: "✅ Primera frase: beneficio + confianza",
+          chk3: "✅ Detalles claros (y defectos si los hay)",
+          chk4: "✅ Fotos nítidas (mínimo 6)",
+          chk5: "✅ Precio con lógica + CTA simple",
+          tip: "Tip: crea un anuncio “base” y reutilízalo. Publica manualmente donde quieras y ahorras tiempo.",
+          cta_card: "Crear anuncio con GaviraBoost",
+          cta_note: "Crea el anuncio aquí y pégalo donde quieras.",
+          steps_title: "Los 7 pasos para vender más rápido",
+          steps_desc: "Esto funciona para segunda mano y para productos digitales. Es una fórmula simple: claridad + confianza + facilidad.",
+          s1_t: "1) Título que se entiende en 2 segundos",
+          s1_d: "Usa este orden: qué es + marca/modelo + detalle clave + estado. Si el título es genérico, te saltan.",
+          s1_ex: "Ejemplo: “Patinete Xiaomi M365 · batería ok · buen estado”",
+          s2_t: "2) Primera frase = gancho",
+          s2_d: "Beneficio + confianza. La gente escanea. Si la primera frase es mala, no hay segunda oportunidad.",
+          s2_ex: "“Funciona perfecto, listo para usar hoy. Fotos reales.”",
+          s3_t: "3) Descripción corta pero completa",
+          s3_d: "Estructura por bloques: estado, incluye, motivo de venta, entrega/envío, precio. Sin párrafos eternos.",
+          s4_t: "4) Fotos que generan confianza",
+          s4_d: "Luz natural, fondo limpio, varias perspectivas y detalle de lo “importante”. Si hay defecto, foto también.",
+          s5_t: "5) Precio con lógica (y sin miedo)",
+          s5_d: "Mira anuncios similares y decide: vender rápido (precio competitivo) o maximizar (más alto pero justificando).",
+          s6_t: "6) CTA simple (para que te escriban)",
+          s6_d: "“Si te interesa, escríbeme y respondo rápido.” Parece tonto, pero sube mensajes.",
+          s7_t: "7) Reutiliza el anuncio en varias plataformas (sin repetir trabajo)",
+          s7_d: "Crea un anuncio base y publícalo manualmente donde quieras. Puedes usar marketplaces como Vinted, Wallapop, eBay o Milanuncios como ejemplo. Lo importante es: un anuncio excelente y consistente.",
+          boost_box_t: "¿Quieres hacerlo en 2 minutos?",
+          boost_box_d: "GaviraBoost te da una estructura lista para rellenar (título + descripción + checklist) y te deja el texto limpio para copiar y pegar.",
+          boost_box_cta: "Abrir GaviraBoost",
+          boost_box_cta2: "Ver plantilla",
+          ex_title: "Ejemplos rápidos (según producto)",
+          ex_desc: "Copia la idea. Ajusta los detalles. Mantén la estructura.",
+          ex1_t: "Portátil",
+          ex1_d: "Di lo que importa: modelo, RAM, SSD, batería, estado, cargador. Y fotos de la pantalla encendida.",
+          ex1_ex: "Título: “Lenovo ThinkPad T480 · i5 · 16GB RAM · 512GB SSD”",
+          ex2_t: "Patinete",
+          ex2_d: "Batería, km aproximados, ruedas/frenos, si tiene factura, y si incluye cargador.",
+          ex2_ex: "Título: “Xiaomi M365 · batería ok · ruedas nuevas · buen estado”",
+          ex3_t: "Ropa",
+          ex3_d: "Talla, medidas reales, estado, marca, y fotos con buena luz. Evita filtros raros.",
+          ex4_t: "Producto digital",
+          ex4_d: "Promete un resultado claro: qué incluye, para quién es, y cómo se entrega. Menos humo, más concreto.",
+          tpl_title: "Plantilla lista para copiar",
+          tpl_desc: "Rellena campos y tendrás un anuncio estructurado. Ideal para reutilizar en varias plataformas.",
+          tpl_box_t: "Formato recomendado",
+          tpl_copy: "Copiar plantilla",
+          tpl_note: "Consejo: ajusta una línea según la plataforma, pero mantén el anuncio base.",
+          faq_title: "FAQ",
+          faq_desc: "Respuestas rápidas (y ayuda al SEO).",
+          q1: "¿Es legal mencionar Vinted, Wallapop, eBay o Milanuncios?",
+          a1: "Sí, como referencia descriptiva. No hay afiliación ni integración oficial. Aquí hablamos de crear el anuncio y publicarlo manualmente.",
+          q2: "¿GaviraBoost publica automáticamente en esas plataformas?",
+          a2: "No. GaviraBoost te ayuda a crear el anuncio (estructura, texto, claridad) y luego tú lo publicas manualmente donde quieras.",
+          q3: "¿Qué tipo de productos funciona mejor?",
+          a3: "Los que se entienden rápido: modelos claros, fotos buenas y descripción honesta. Esto aplica a físicos y digitales.",
+          q4: "¿Cómo consigo mensajes más rápido?",
+          a4: "Mejora título + primera frase + fotos. Y termina siempre con una CTA simple. Es lo que más mueve la aguja.",
+          faq_cta: "Entrar a GaviraBoost",
+          legal_note:
+            "Vinted, Wallapop, eBay, Milanuncios y otras marcas mencionadas pertenecen a sus respectivos titulares. No existe afiliación oficial ni integración directa. El usuario es responsable de publicar manualmente su anuncio en cada plataforma.",
+          f_legal: "Aviso legal",
+          f_priv: "Privacidad",
+          f_cookies: "Cookies",
+          f_terms: "Términos",
+          f_sec: "Security",
+          f_contact: "Contacto"
+        },
+        en: {
+          tagline: "Guide to sell better",
+          nav_steps: "Steps",
+          nav_examples: "Examples",
+          nav_template: "Template",
+          nav_faq: "FAQ",
+          cta: "Open GaviraBoost",
+          pill: "Practical guide, no fluff.",
+          h1_1: "Sell faster",
+          h1_2: "any product",
+          h1_3: "with listings that convert.",
+          intro:
+            "Laptop, scooter, clothes, electronics… or a digital product. The difference isn’t “posting more”: it’s posting better. Here’s a simple structure to create listings people understand in 10 seconds—and that get messages.",
+          btn_read: "Start the guide",
+          btn_tpl: "Copy template",
+          chip1: "Title",
+          chip2: "Description",
+          chip3: "Photos",
+          chip4: "Pricing",
+          chip5: "CTA",
+          card_title: "60s checklist",
+          card_tag: "fast",
+          chk1: "✅ Title: what + model + condition",
+          chk2: "✅ First line: benefit + trust",
+          chk3: "✅ Clear details (and flaws if any)",
+          chk4: "✅ Sharp photos (at least 6)",
+          chk5: "✅ Logical price + simple CTA",
+          tip: "Tip: create a “base” listing and reuse it. Post manually wherever you want and save time.",
+          cta_card: "Create listing with GaviraBoost",
+          cta_note: "Create it here and paste it anywhere.",
+          steps_title: "7 steps to sell faster",
+          steps_desc: "Works for second-hand and digital products. Simple formula: clarity + trust + ease.",
+          s1_t: "1) A title understood in 2 seconds",
+          s1_d: "Use: what + brand/model + key detail + condition. Generic titles get skipped.",
+          s1_ex: "Example: “Xiaomi M365 scooter · battery ok · good condition”",
+          s2_t: "2) First line = hook",
+          s2_d: "Benefit + trust. People scan. Bad first line = no second chance.",
+          s2_ex: "“Works perfectly, ready to use today. Real photos.”",
+          s3_t: "3) Short but complete description",
+          s3_d: "Block format: condition, includes, reason, delivery/shipping, price. No wall of text.",
+          s4_t: "4) Photos that build trust",
+          s4_d: "Natural light, clean background, multiple angles + key details. If there’s a flaw, show it.",
+          s5_t: "5) Logical pricing (no fear)",
+          s5_d: "Check similar listings and decide: fast sale (competitive) or maximize (higher + justify).",
+          s6_t: "6) Simple CTA (to get messages)",
+          s6_d: "“If you’re interested, message me—I reply fast.” It really boosts inquiries.",
+          s7_t: "7) Reuse across platforms (no repeated work)",
+          s7_d: "Create a base listing and post it manually wherever you want. Marketplaces like Vinted, Wallapop, eBay or Milanuncios are common examples. Key is: a great consistent listing.",
+          boost_box_t: "Want to do it in 2 minutes?",
+          boost_box_d: "GaviraBoost gives you a ready-to-fill structure (title + description + checklist) and clean text to copy/paste.",
+          boost_box_cta: "Open GaviraBoost",
+          boost_box_cta2: "See template",
+          ex_title: "Quick examples (by product)",
+          ex_desc: "Copy the idea. Adjust details. Keep the structure.",
+          ex1_t: "Laptop",
+          ex1_d: "Say what matters: model, RAM, SSD, battery, condition, charger. Include a photo of the screen on.",
+          ex1_ex: "Title: “Lenovo ThinkPad T480 · i5 · 16GB RAM · 512GB SSD”",
+          ex2_t: "Scooter",
+          ex2_d: "Battery, rough mileage, brakes/tires, receipt if any, and charger included.",
+          ex2_ex: "Title: “Xiaomi M365 · battery ok · new tires · good condition”",
+          ex3_t: "Clothes",
+          ex3_d: "Size, real measurements, condition, brand, good lighting photos. Avoid heavy filters.",
+          ex4_t: "Digital product",
+          ex4_d: "Promise a clear outcome: what’s included, who it’s for, and delivery method. Less fluff, more specifics.",
+          tpl_title: "Copy-ready template",
+          tpl_desc: "Fill the fields and you’ll have a structured listing. Perfect for reuse across platforms.",
+          tpl_box_t: "Recommended format",
+          tpl_copy: "Copy template",
+          tpl_note: "Tip: tweak one line per platform, but keep the base listing.",
+          faq_title: "FAQ",
+          faq_desc: "Quick answers (also helps SEO).",
+          q1: "Is it legal to mention Vinted, Wallapop, eBay or Milanuncios?",
+          a1: "Yes, as descriptive references. No official affiliation or integration. We’re talking about creating the listing and posting it manually.",
+          q2: "Does GaviraBoost auto-post to those platforms?",
+          a2: "No. GaviraBoost helps you write the listing (structure, clarity) and you post it manually wherever you want.",
+          q3: "Which products work best?",
+          a3: "Products that are understood fast: clear model, good photos, honest description. Works for physical and digital.",
+          q4: "How do I get messages faster?",
+          a4: "Improve title + first line + photos. Always end with a simple CTA. That’s what moves the needle.",
+          faq_cta: "Open GaviraBoost",
+          legal_note:
+            "Vinted, Wallapop, eBay, Milanuncios and other mentioned brands belong to their respective owners. No official affiliation or direct integration. Users are responsible for posting manually on each platform.",
+          f_legal: "Legal",
+          f_priv: "Privacy",
+          f_cookies: "Cookies",
+          f_terms: "Terms",
+          f_sec: "Security",
+          f_contact: "Contact"
+        }
+      };
+
+      function setLang(lang) {
+        const dict = i18n[lang] || i18n.es;
+        document.documentElement.lang = lang === "en" ? "en" : "es";
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const key = el.getAttribute("data-i18n");
+          if (dict[key]) el.textContent = dict[key];
+        });
+
+        const esBtn = document.getElementById("lang-es");
+        const enBtn = document.getElementById("lang-en");
+        const active = "bg-white/10 text-white";
+        const inactive = "text-white/70 hover:text-white";
+        if (lang === "en") {
+          enBtn.className = `rounded-lg px-3 py-1 text-xs font-medium ${active}`;
+          esBtn.className = `rounded-lg px-3 py-1 text-xs font-medium ${inactive}`;
+        } else {
+          esBtn.className = `rounded-lg px-3 py-1 text-xs font-medium ${active}`;
+          enBtn.className = `rounded-lg px-3 py-1 text-xs font-medium ${inactive}`;
+        }
+
+        localStorage.setItem("gaviralabs_lang", lang);
+      }
+
+      document.getElementById("lang-es").addEventListener("click", () => setLang("es"));
+      document.getElementById("lang-en").addEventListener("click", () => setLang("en"));
+
+      const saved = localStorage.getItem("gaviralabs_lang");
+      setLang(saved || "es");
+
+      // FAQ schema (in ES by default; good enough for Google; content is equivalent)
+      const faq = {
+        "@context":"https://schema.org",
+        "@type":"FAQPage",
+        "mainEntity":[
+          {
+            "@type":"Question",
+            "name":"¿Es legal mencionar Vinted, Wallapop, eBay o Milanuncios?",
+            "acceptedAnswer":{"@type":"Answer","text":"Sí, como referencia descriptiva. No hay afiliación ni integración oficial. Aquí hablamos de crear el anuncio y publicarlo manualmente."}
+          },
+          {
+            "@type":"Question",
+            "name":"¿GaviraBoost publica automáticamente en esas plataformas?",
+            "acceptedAnswer":{"@type":"Answer","text":"No. GaviraBoost te ayuda a crear el anuncio (estructura, texto, claridad) y luego tú lo publicas manualmente donde quieras."}
+          },
+          {
+            "@type":"Question",
+            "name":"¿Qué tipo de productos funciona mejor?",
+            "acceptedAnswer":{"@type":"Answer","text":"Los que se entienden rápido: modelos claros, fotos buenas y descripción honesta. Esto aplica a físicos y digitales."}
+          },
+          {
+            "@type":"Question",
+            "name":"¿Cómo consigo mensajes más rápido?",
+            "acceptedAnswer":{"@type":"Answer","text":"Mejora título + primera frase + fotos. Y termina siempre con una CTA simple. Es lo que más mueve la aguja."}
+          }
+        ]
+      };
+      document.getElementById("faq-schema").textContent = JSON.stringify(faq);
+
+      // GSAP reveal animations (soft)
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.from("h1", { y: 14, opacity: 0, duration: 0.75, ease: "power2.out" });
+      gsap.utils.toArray("section").forEach((el) => {
+        gsap.from(el, {
+          scrollTrigger: { trigger: el, start: "top 85%" },
+          y: 16,
+          opacity: 0,
+          duration: 0.7,
+          ease: "power2.out",
+        });
+      });
     </script>
   </body>
 </html>

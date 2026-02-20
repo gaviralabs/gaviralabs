@@ -10,22 +10,9 @@
     />
     <meta name="theme-color" content="#0b0f19" />
     <link rel="icon" href="/favicon.svg" />
+
+    <!-- Canonical -->
     <link rel="canonical" href="https://www.gaviralabs.com/" />
-    <meta name="robots" content="index,follow" />
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="GaviraLabs — Digital products, tools and experiences" />
-    <meta property="og:description" content="Personal studio building modern web tools and products focused on performance, design and scalability." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.gaviralabs.com/" />
-    <meta property="og:image" content="https://www.gaviralabs.com/assets/og.jpg" />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="GaviraLabs — Digital products, tools and experiences" />
-    <meta name="twitter:description" content="Tools, products and modern web experiences." />
-    <meta name="twitter:image" content="https://www.gaviralabs.com/assets/og.jpg" />
-
 
     <!-- Tailwind (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -42,11 +29,9 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
     <style>
-      /* Smooth edges + better text rendering */
       html { scroll-behavior: smooth; }
       body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
-      /* Neon gradient accent */
       .glow {
         filter: drop-shadow(0 0 22px rgba(99, 102, 241, 0.35))
                 drop-shadow(0 0 48px rgba(34, 211, 238, 0.18));
@@ -62,14 +47,14 @@
         opacity: 0.35;
       }
 
-      /* Video overlay to ensure readability */
-      .video-overlay {
-        background: radial-gradient(1200px 650px at 25% 20%, rgba(99, 102, 241, 0.35), transparent 55%),
-                    radial-gradient(900px 520px at 75% 35%, rgba(34, 211, 238, 0.22), transparent 60%),
-                    linear-gradient(to bottom, rgba(11, 15, 25, 0.75), rgba(11, 15, 25, 0.95));
+      /* Background overlay to ensure readability (no video) */
+      .bg-overlay {
+        background:
+          radial-gradient(1200px 650px at 25% 20%, rgba(99, 102, 241, 0.35), transparent 55%),
+          radial-gradient(900px 520px at 75% 35%, rgba(34, 211, 238, 0.22), transparent 60%),
+          linear-gradient(to bottom, rgba(11, 15, 25, 0.75), rgba(11, 15, 25, 0.95));
       }
 
-      /* Live code terminal */
       .terminal {
         background: rgba(0, 0, 0, 0.35);
         border: 1px solid rgba(255, 255, 255, 0.10);
@@ -86,21 +71,12 @@
       }
       @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 
-      /* Buttons */
       .btn {
         transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
       }
       .btn:hover { transform: translateY(-1px); }
       .btn:active { transform: translateY(0px); }
 
-      /* Better focus visibility */
-      :focus-visible {
-        outline: 2px solid rgba(99, 102, 241, 0.9);
-        outline-offset: 3px;
-        border-radius: 10px;
-      }
-
-      /* Reduce motion */
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
         .caret { animation: none; }
@@ -109,25 +85,9 @@
   </head>
 
   <body class="bg-slate-950 text-white">
-    <a href="#top" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-slate-950">
-      Saltar al contenido
-    </a>
-
-    <!-- Top background -->
+    <!-- Top background (NO VIDEO) -->
     <div class="fixed inset-0 -z-10">
-      <!-- Replace with your own video at /assets/hero.mp4 or /assets/hero.webm -->
-      <video
-        class="h-full w-full object-cover opacity-60"
-        autoplay
-        muted
-        playsinline
-        loop
-        poster="/assets/hero-poster.jpg"
-      >
-        <source src="/assets/hero.webm" type="video/webm" />
-        <source src="/assets/hero.mp4" type="video/mp4" />
-      </video>
-      <div class="absolute inset-0 video-overlay"></div>
+      <div class="absolute inset-0 bg-overlay"></div>
       <div class="absolute inset-0 grid-bg"></div>
     </div>
 
@@ -148,7 +108,7 @@
           </div>
         </a>
 
-        <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+        <nav class="hidden items-center gap-6 md:flex">
           <a href="#projects" class="text-sm text-white/80 hover:text-white" data-i18n="nav_projects">Proyectos</a>
           <a href="#about" class="text-sm text-white/80 hover:text-white" data-i18n="nav_about">Sobre mí</a>
           <a href="#contact" class="text-sm text-white/80 hover:text-white" data-i18n="nav_contact">Contacto</a>
@@ -156,12 +116,11 @@
 
         <div class="flex items-center gap-2">
           <!-- Language toggle -->
-          <div class="flex rounded-xl bg-white/5 p-1 ring-1 ring-white/10" role="group" aria-label="Language">
+          <div class="flex rounded-xl bg-white/5 p-1 ring-1 ring-white/10">
             <button
               id="lang-es"
               class="rounded-lg px-3 py-1 text-xs font-medium text-white bg-white/10"
               aria-label="Cambiar a Español"
-              type="button"
             >
               ES
             </button>
@@ -169,7 +128,6 @@
               id="lang-en"
               class="rounded-lg px-3 py-1 text-xs font-medium text-white/70 hover:text-white"
               aria-label="Switch to English"
-              type="button"
             >
               EN
             </button>
@@ -236,7 +194,7 @@
           <!-- Live coding card -->
           <div class="terminal rounded-2xl p-5 shadow-2xl shadow-indigo-500/10">
             <div class="mb-4 flex items-center justify-between">
-              <div class="flex items-center gap-2" aria-hidden="true">
+              <div class="flex items-center gap-2">
                 <span class="h-3 w-3 rounded-full bg-rose-400/90"></span>
                 <span class="h-3 w-3 rounded-full bg-amber-300/90"></span>
                 <span class="h-3 w-3 rounded-full bg-emerald-400/90"></span>
@@ -247,7 +205,7 @@
             <div class="rounded-xl bg-black/40 p-4 ring-1 ring-white/10">
               <div class="mb-3 flex items-center justify-between text-xs text-white/60">
                 <span data-i18n="live_file">/apps/gaviralabs/landing.ts</span>
-                <span class="inline-flex items-center gap-2" aria-label="Status">
+                <span class="inline-flex items-center gap-2">
                   <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
                   <span data-i18n="live_status">deploying…</span>
                 </span>
@@ -299,13 +257,14 @@
               </span>
             </div>
             <p class="mt-3 text-sm text-white/75" data-i18n="boost_desc">
-              Herramienta para productividad y optimización de flujos. Rápida, simple y enfocada en resultados.
+              Sistema para crear anuncios optimizados (físicos o digitales) y reutilizarlos en múltiples marketplaces.
+              Escribe mejor, vende más, sin complicarte.
             </p>
 
             <div class="mt-5 flex flex-wrap gap-2 text-xs text-white/60">
-              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Automation</span>
-              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Workflow</span>
-              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Performance</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Marketplace</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Optimización</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Conversión</span>
             </div>
 
             <div class="mt-6 flex gap-3">
@@ -324,19 +283,12 @@
                 Hablemos
               </a>
             </div>
-          
 
             <p class="mt-5 text-xs text-white/60">
-              <span data-i18n="boost_seo_prefix">Aprende cómo crear anuncios optimizados para vender más →</span>
-              <a
-                href="/crear-anuncios-para-vender-mas.html"
-                class="underline hover:text-white transition"
-                data-i18n="boost_seo_link"
-              >
-                Ver guía completa
-              </a>
+              <span data-i18n="boost_seo_lead">Aprende a vender más con anuncios mejores →</span>
+              <a href="/crear-anuncios-para-vender-mas.html" class="underline hover:text-white" data-i18n="boost_seo_link">Ver guía completa</a>
             </p>
-</article>
+          </article>
 
           <!-- Coming soon -->
           <article class="rounded-2xl bg-white/5 p-6 ring-1 ring-white/10">
@@ -419,7 +371,7 @@
             </div>
 
             <a
-              href="mailto:gaviralabs@gmail.com?subject=GaviraLabs%20—%20Contacto"
+              href="mailto:alegaviragarcia@gmail.com?subject=GaviraLabs%20—%20Contacto"
               class="btn inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-white/10 hover:bg-white/90"
               data-i18n="contact_btn"
             >
@@ -430,79 +382,13 @@
       </section>
 
       <footer class="border-t border-white/10 py-10 text-center text-xs text-white/55">
-        <div class="mx-auto max-w-6xl px-4">
-          <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div>
-              © <span id="year"></span> GaviraLabs — Built for speed.
-              <span class="block mt-1 text-white/45">
-                Titular: Alejandro Gavira Garcia ·
-                <span data-i18n="footer_location">España</span> ·
-                <span data-i18n="footer_email">Email</span>:
-                <a class="underline hover:text-white" href="mailto:gaviralabs@gmail.com">gaviralabs@gmail.com</a>
-              </span>
-            </div>
-
-            <nav class="flex flex-wrap items-center justify-center gap-4" aria-label="Legal">
-              <a class="hover:text-white underline underline-offset-2" href="/aviso-legal.html" data-i18n="f_legal">Aviso legal</a>
-              <a class="hover:text-white underline underline-offset-2" href="/privacidad.html" data-i18n="f_privacy">Privacidad</a>
-              <a class="hover:text-white underline underline-offset-2" href="/cookies.html" data-i18n="f_cookies">Cookies</a>
-              <a class="hover:text-white underline underline-offset-2" href="/terminos.html" data-i18n="f_terms">Términos</a>
-              <a class="hover:text-white underline underline-offset-2" href="/contacto.html" data-i18n="f_contact">Contacto</a>
-              <a class="hover:text-white underline underline-offset-2" href="/security.html">Security</a>
-            </nav>
-          </div>
-
-          <div class="mt-4 text-[11px] text-white/45" data-i18n="footer_disclaimer">
-            Este sitio no usa analítica ni publicidad. Solo cookies técnicas (p. ej., idioma). Consulta la política de privacidad y cookies.
-          </div>
-        </div>
+        <div>© <span id="year"></span> GaviraLabs — Built for speed.</div>
       </footer>
     </main>
-
-    <!-- Cookie banner (solo cookies técnicas) -->
-    <div id="cookie-banner" class="fixed bottom-4 left-4 right-4 z-50 hidden md:left-6 md:right-auto md:max-w-xl">
-      <div class="rounded-2xl bg-slate-950/85 p-4 ring-1 ring-white/15 backdrop-blur-xl shadow-2xl shadow-indigo-500/10">
-        <div class="flex items-start gap-3">
-          <div class="mt-1 h-2.5 w-2.5 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(52,211,153,0.5)]"></div>
-          <div class="flex-1">
-            <div class="text-sm font-semibold" data-i18n="ck_title">Cookies técnicas</div>
-            <p class="mt-1 text-xs text-white/70" data-i18n="ck_desc">
-              Usamos solo cookies necesarias para que el sitio funcione (p. ej., recordar el idioma). No usamos analítica ni publicidad.
-            </p>
-            <div class="mt-3 flex flex-wrap gap-2">
-              <button id="ck_accept" type="button" class="btn rounded-xl bg-white px-4 py-2 text-xs font-semibold text-slate-950 hover:bg-white/90" data-i18n="ck_ok">
-                Entendido
-              </button>
-              <a href="/cookies.html" class="btn rounded-xl bg-white/10 px-4 py-2 text-xs font-semibold text-white ring-1 ring-white/15 hover:bg-white/15" data-i18n="ck_more">
-                Ver política
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <script>
       // Footer year
       document.getElementById("year").textContent = new Date().getFullYear();
-
-      // --- Cookies (solo técnicas) banner ---
-      const CK_KEY = "gaviralabs_cookies_v1";
-      function showCookieBannerIfNeeded() {
-        try {
-          const saved = localStorage.getItem(CK_KEY);
-          if (!saved) document.getElementById("cookie-banner").classList.remove("hidden");
-        } catch (e) {
-          document.getElementById("cookie-banner").classList.remove("hidden");
-        }
-      }
-      function acceptCookies() {
-        try { localStorage.setItem(CK_KEY, "accepted"); } catch (e) {}
-        const b = document.getElementById("cookie-banner");
-        if (b) b.classList.add("hidden");
-      }
-      document.getElementById("ck_accept")?.addEventListener("click", acceptCookies);
-      showCookieBannerIfNeeded();
 
       // --- i18n content ---
       const i18n = {
@@ -533,10 +419,10 @@
           projects_desc:
             "Productos independientes bajo una misma marca. Cada proyecto vive en su propio subdominio.",
           boost_desc:
-            "Herramienta para productividad y optimización de flujos. Rápida, simple y enfocada en resultados.",
+            "Sistema para crear anuncios optimizados (físicos o digitales) y reutilizarlos en múltiples marketplaces. Escribe mejor, vende más, sin complicarte.",
           boost_btn: "Abrir GaviraBoost",
           boost_btn2: "Hablemos",
-          boost_seo_prefix: "Aprende cómo crear anuncios optimizados para vender más →",
+          boost_seo_lead: "Aprende a vender más con anuncios mejores →",
           boost_seo_link: "Ver guía completa",
           next_title: "Próximo producto",
           next_tag: "Próximamente",
@@ -562,23 +448,6 @@
           contact_desc:
             "Si quieres colaborar, contratarme o lanzar un producto, escríbeme. Respondo rápido.",
           contact_btn: "Contactar",
-
-          // Footer legal links
-          f_legal: "Aviso legal",
-          f_privacy: "Privacidad",
-          f_cookies: "Cookies",
-          f_terms: "Términos",
-          f_contact: "Contacto",
-          footer_location: "España",
-          footer_email: "Email",
-          footer_disclaimer:
-            "Este sitio no usa analítica ni publicidad. Solo cookies técnicas (p. ej., idioma). Consulta la política de privacidad y cookies.",
-
-          // Cookie banner
-          ck_title: "Cookies técnicas",
-          ck_desc: "Usamos solo cookies necesarias para que el sitio funcione (p. ej., recordar el idioma). No usamos analítica ni publicidad.",
-          ck_ok: "Entendido",
-          ck_more: "Ver política",
         },
         en: {
           tagline: "Digital product studio",
@@ -605,10 +474,10 @@
           proof: "Built to scale: GaviraBoost today, more products tomorrow.",
           projects_title: "Projects",
           projects_desc: "Independent products under one brand. Each project lives on its own subdomain.",
-          boost_desc: "A productivity tool built to optimize workflows: fast, simple, results-driven.",
+          boost_desc: "A simple system to create optimized listings (physical or digital) and reuse them across marketplaces. Write better, sell more, no hassle.",
           boost_btn: "Open GaviraBoost",
           boost_btn2: "Let’s talk",
-          boost_seo_prefix: "Learn how to create optimized listings to sell more →",
+          boost_seo_lead: "Learn to sell more with better listings →",
           boost_seo_link: "Read the full guide",
           next_title: "Next product",
           next_tag: "Coming soon",
@@ -632,23 +501,6 @@
           contact_title: "Let’s build something",
           contact_desc: "Want to collaborate, hire me, or ship a product? Send me a message.",
           contact_btn: "Contact",
-
-          // Footer legal links
-          f_legal: "Legal notice",
-          f_privacy: "Privacy",
-          f_cookies: "Cookies",
-          f_terms: "Terms",
-          f_contact: "Contact",
-          footer_location: "Spain",
-          footer_email: "Email",
-          footer_disclaimer:
-            "No analytics or ads. Only essential cookies (e.g., language). See Privacy and Cookies policies.",
-
-          // Cookie banner
-          ck_title: "Essential cookies",
-          ck_desc: "We only use cookies required for the site to work (e.g., remembering language). No analytics or ads.",
-          ck_ok: "Got it",
-          ck_more: "View policy",
         },
       };
 
@@ -660,7 +512,6 @@
           if (dict[key]) el.textContent = dict[key];
         });
 
-        // toggle styles
         const esBtn = document.getElementById("lang-es");
         const enBtn = document.getElementById("lang-en");
         const active = "bg-white/10 text-white";
@@ -673,14 +524,12 @@
           enBtn.className = `rounded-lg px-3 py-1 text-xs font-medium ${inactive}`;
         }
 
-        // persist
         localStorage.setItem("gaviralabs_lang", lang);
       }
 
       document.getElementById("lang-es").addEventListener("click", () => setLang("es"));
       document.getElementById("lang-en").addEventListener("click", () => setLang("en"));
 
-      // Load saved language
       const saved = localStorage.getItem("gaviralabs_lang");
       setLang(saved || "es");
 
@@ -688,20 +537,21 @@
       const codeLines = [
         "import { deploy, edgeCache } from 'gaviralabs/runtime';",
         "",
-        "type Product = {",
-        "  name: string;",
-        "  url: string;",
-        "  status: 'live' | 'soon';",
+        "type Listing = {",
+        "  title: string;",
+        "  description: string;",
+        "  category: 'physical' | 'digital';",
         "};",
         "",
-        "const products: Product[] = [",
-        "  { name: 'GaviraBoost', url: 'https://gaviraboost.gaviralabs.com', status: 'live' },",
-        "  { name: 'Next Project', url: 'https://next.gaviralabs.com', status: 'soon' },",
-        "];",
+        "const listing: Listing = {",
+        "  title: 'Portátil Lenovo ThinkPad T480 · i5 · 16GB',",
+        "  description: 'Funciona perfecto. Batería ok. Entrega rápida.',",
+        "  category: 'physical',",
+        "};",
         "",
         "export async function main() {",
         "  edgeCache.enable({ tiered: true, tls: 'strict', hsts: true });",
-        "  await deploy({ brand: 'GaviraLabs', products });",
+        "  await deploy({ brand: 'GaviraLabs', listing });",
         "}",
         "",
         "main();",
@@ -714,14 +564,12 @@
 
       function tick() {
         if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-          // no typing animation
           codeEl.textContent = codeLines.join("\n");
           hljs.highlightElement(codeEl);
           return;
         }
 
         if (lineIdx >= codeLines.length) {
-          // loop softly: restart after a pause
           setTimeout(() => {
             lineIdx = 0; charIdx = 0; current = "";
             codeEl.textContent = "";
@@ -736,9 +584,8 @@
           codeEl.textContent = current;
           hljs.highlightElement(codeEl);
           charIdx++;
-          setTimeout(tick, 18); // typing speed
+          setTimeout(tick, 18);
         } else {
-          // next line
           lineIdx++;
           charIdx = 0;
           setTimeout(tick, 160);
@@ -762,21 +609,6 @@
           ease: "power2.out",
         });
       });
-    </script>
-
-    <!-- Structured data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Alejandro Gavira Garcia",
-      "url": "https://www.gaviralabs.com/",
-      "email": "mailto:gaviralabs@gmail.com",
-      "brand": {
-        "@type": "Brand",
-        "name": "GaviraLabs"
-      }
-    }
     </script>
   </body>
 </html>
