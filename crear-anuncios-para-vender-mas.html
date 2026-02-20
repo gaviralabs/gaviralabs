@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cómo crear anuncios optimizados para vender más en marketplaces | GaviraBoost</title>
+    <meta
+      name="description"
+      content="Guía práctica para crear anuncios optimizados que vendan más en marketplaces online. Aprende a mejorar título, descripción y conversión, y reutiliza tu anuncio en varias plataformas."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0b0f19" />
+    <link rel="canonical" href="https://www.gaviralabs.com/crear-anuncios-para-vender-mas.html" />
+    <link rel="icon" href="/favicon.svg" />
+
+    <!-- Tailwind (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:title" content="Anuncios optimizados para vender más | GaviraBoost" />
+    <meta
+      property="og:description"
+      content="Estructura tu anuncio para convertir mejor y reutilízalo en múltiples marketplaces. Guía + sistema recomendado."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.gaviralabs.com/crear-anuncios-para-vender-mas.html" />
+    <meta property="og:image" content="https://www.gaviralabs.com/assets/og.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <style>
+      html { scroll-behavior: smooth; }
+      body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+      .glow {
+        filter: drop-shadow(0 0 22px rgba(99, 102, 241, 0.35))
+                drop-shadow(0 0 48px rgba(34, 211, 238, 0.18));
+      }
+      .grid-bg {
+        background-image:
+          linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255,255,255,0.06) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: radial-gradient(ellipse at top, rgba(0,0,0,1), rgba(0,0,0,0.1) 60%, rgba(0,0,0,0) 75%);
+        opacity: 0.35;
+      }
+      .video-overlay {
+        background: radial-gradient(1200px 650px at 25% 20%, rgba(99, 102, 241, 0.35), transparent 55%),
+                    radial-gradient(900px 520px at 75% 35%, rgba(34, 211, 238, 0.22), transparent 60%),
+                    linear-gradient(to bottom, rgba(11, 15, 25, 0.75), rgba(11, 15, 25, 0.95));
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        backdrop-filter: blur(14px);
+      }
+      .btn { transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease; }
+      .btn:hover { transform: translateY(-1px); }
+      .btn:active { transform: translateY(0px); }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+
+    <!-- Schema: Article + SoftwareApplication -->
+    <script type="application/ld+json">
+      {
+        "@context":"https://schema.org",
+        "@type":"Article",
+        "headline":"Cómo crear anuncios optimizados para vender más en marketplaces",
+        "description":"Guía práctica para mejorar títulos, descripciones y conversión, y reutilizar tu anuncio en varias plataformas.",
+        "author":{"@type":"Person","name":"Alejandro Gavira Garcia"},
+        "publisher":{"@type":"Organization","name":"GaviraLabs","url":"https://www.gaviralabs.com"},
+        "mainEntityOfPage":{"@type":"WebPage","@id":"https://www.gaviralabs.com/crear-anuncios-para-vender-mas.html"}
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context":"https://schema.org",
+        "@type":"SoftwareApplication",
+        "name":"GaviraBoost",
+        "applicationCategory":"BusinessApplication",
+        "operatingSystem":"Web",
+        "url":"https://gaviraboost.gaviralabs.com",
+        "publisher":{"@type":"Organization","name":"GaviraLabs","url":"https://www.gaviralabs.com"}
+      }
+    </script>
+  </head>
+
+  <body class="bg-slate-950 text-white">
+    <!-- Background -->
+    <div class="fixed inset-0 -z-10">
+      <video
+        class="h-full w-full object-cover opacity-60"
+        autoplay
+        muted
+        playsinline
+        loop
+        poster="/assets/hero-poster.jpg"
+      >
+        <source src="/assets/hero.webm" type="video/webm" />
+        <source src="/assets/hero.mp4" type="video/mp4" />
+      </video>
+      <div class="absolute inset-0 video-overlay"></div>
+      <div class="absolute inset-0 grid-bg"></div>
+    </div>
+
+    <!-- Header -->
+    <a href="#contenido" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-xl focus:bg-white focus:px-4 focus:py-2 focus:text-slate-950">
+      Saltar al contenido
+    </a>
+
+    <header class="sticky top-0 z-40 border-b border-white/10 bg-slate-950/30 backdrop-blur-xl">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+        <a href="/" class="flex items-center gap-2">
+          <span class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-white/10 ring-1 ring-white/10 glow">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="opacity-90">
+              <path d="M12 2l8.5 5v10L12 22 3.5 17V7L12 2z" stroke="currentColor" stroke-width="1.6"/>
+              <path d="M12 7v10" stroke="currentColor" stroke-width="1.6" opacity="0.7"/>
+              <path d="M7.5 9.5L12 12l4.5-2.5" stroke="currentColor" stroke-width="1.6" opacity="0.7"/>
+            </svg>
+          </span>
+          <div class="leading-tight">
+            <div class="font-semibold tracking-tight">GaviraLabs</div>
+            <div class="text-xs text-white/60">Guía · Marketplace Ads</div>
+          </div>
+        </a>
+
+        <nav class="hidden items-center gap-6 md:flex" aria-label="Navegación">
+          <a href="#pasos" class="text-sm text-white/80 hover:text-white">Pasos</a>
+          <a href="#plantilla" class="text-sm text-white/80 hover:text-white">Plantilla</a>
+          <a href="#faq" class="text-sm text-white/80 hover:text-white">FAQ</a>
+        </nav>
+
+        <a
+          href="https://gaviraboost.gaviralabs.com"
+          class="btn inline-flex items-center justify-center rounded-xl bg-indigo-500/90 px-4 py-2 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500"
+        >
+          Abrir GaviraBoost
+        </a>
+      </div>
+    </header>
+
+    <main id="contenido" class="mx-auto max-w-6xl px-4">
+      <!-- Hero -->
+      <section class="relative py-14 md:py-20">
+        <div class="grid items-start gap-10 md:grid-cols-2 md:items-center">
+          <div>
+            <div class="inline-flex items-center gap-2 rounded-full bg-white/5 px-3 py-1 text-xs text-white/75 ring-1 ring-white/10">
+              <span class="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_18px_rgba(52,211,153,0.6)]"></span>
+              <span>Optimiza tu anuncio · Reutilízalo · Vende más</span>
+            </div>
+
+            <h1 class="mt-5 text-4xl font-semibold tracking-tight md:text-5xl">
+              Cómo crear <span class="text-indigo-300">anuncios optimizados</span><br />
+              para vender más en marketplaces
+            </h1>
+
+            <p class="mt-4 max-w-xl text-base text-white/75 md:text-lg">
+              Un buen anuncio vende por ti. Esta guía te da una estructura clara para escribir títulos y descripciones que convierten,
+              y luego <strong>reutilizar el anuncio</strong> en distintas plataformas publicándolo manualmente.
+            </p>
+
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a
+                href="#pasos"
+                class="btn inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-white/10 hover:bg-white/90"
+              >
+                Ver la guía
+              </a>
+              <a
+                href="#plantilla"
+                class="btn inline-flex items-center justify-center rounded-xl bg-white/10 px-5 py-3 text-sm font-semibold text-white ring-1 ring-white/15 hover:bg-white/15"
+              >
+                Copiar plantilla
+              </a>
+            </div>
+
+            <div class="mt-7 flex flex-wrap gap-3 text-xs text-white/60">
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Título</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Descripción</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Fotos</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">Precio</span>
+              <span class="rounded-lg bg-white/5 px-3 py-2 ring-1 ring-white/10">CTA</span>
+            </div>
+          </div>
+
+          <!-- Right card -->
+          <aside class="glass rounded-2xl p-6 shadow-2xl shadow-indigo-500/10">
+            <div class="flex items-center justify-between">
+              <div class="text-sm font-semibold">Checklist rápido</div>
+              <span class="rounded-full bg-indigo-500/20 px-3 py-1 text-xs text-indigo-200 ring-1 ring-indigo-400/20">
+                60s
+              </span>
+            </div>
+            <ul class="mt-4 space-y-3 text-sm text-white/75">
+              <li>✅ Título con palabra clave + estado + modelo</li>
+              <li>✅ Beneficio principal en la primera frase</li>
+              <li>✅ Detalles claros (medidas/compatibilidad)</li>
+              <li>✅ Transparencia (defectos/uso real)</li>
+              <li>✅ CTA simple: “Si te interesa, escríbeme”</li>
+            </ul>
+
+            <div class="mt-6 rounded-xl bg-black/25 p-4 ring-1 ring-white/10">
+              <div class="text-xs text-white/70">
+                <strong>Tip:</strong> si vendes en varias plataformas, usa el mismo anuncio base y ajusta solo el formato si hace falta.
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <a
+                href="https://gaviraboost.gaviralabs.com"
+                class="btn inline-flex w-full items-center justify-center rounded-xl bg-indigo-500/90 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500"
+              >
+                Crear anuncio con Boost
+              </a>
+              <p class="mt-2 text-xs text-white/55">
+                Crea el anuncio en Boost y publícalo manualmente donde quieras.
+              </p>
+            </div>
+          </aside>
+        </div>
+
+        <div class="mt-12 border-t border-white/10 pt-8 text-center text-xs text-white/50">
+          <span>
+            Nota: menciones a marketplaces son ejemplos descriptivos; no hay afiliación ni integración oficial.
+          </span>
+        </div>
+      </section>
+
+      <!-- Steps -->
+      <section id="pasos" class="py-14 md:py-20">
+        <div class="max-w-3xl">
+          <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">Guía: estructura de un anuncio que vende</h2>
+          <p class="mt-2 text-white/70">
+            Esta estructura funciona tanto para productos digitales como para físicos. Lo importante es claridad, confianza y velocidad.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-5 md:grid-cols-2">
+          <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
+            <h3 class="text-lg font-semibold">1) Título optimizado</h3>
+            <p class="mt-2 text-sm text-white/75">
+              Usa: <strong>qué es + marca/modelo + estado + detalle clave</strong>.
+              Evita títulos genéricos. Piensa en lo que la gente buscaría.
+            </p>
+            <div class="mt-4 rounded-xl bg-black/25 p-4 ring-1 ring-white/10">
+              <p class="text-xs text-white/70">
+                Ejemplo: “Portátil Lenovo ThinkPad T480 · i5 · 16GB RAM · Buen estado”
+              </p>
+            </div>
+          </article>
+
+          <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
+            <h3 class="text-lg font-semibold">2) Primera frase = gancho</h3>
+            <p class="mt-2 text-sm text-white/75">
+              La primera frase decide si el usuario sigue leyendo. Empieza por el beneficio y la confianza.
+            </p>
+            <div class="mt-4 rounded-xl bg-black/25 p-4 ring-1 ring-white/10">
+              <p class="text-xs text-white/70">
+                “Funciona perfecto, batería en buen estado y listo para usar desde el primer día.”
+              </p>
+            </div>
+          </article>
+
+          <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
+            <h3 class="text-lg font-semibold">3) Detalles claros y honestos</h3>
+            <p class="mt-2 text-sm text-white/75">
+              Lista lo que importa: compatibilidad, medidas, años de uso, accesorios incluidos. Y si hay defectos, dilo.
+              La honestidad reduce regateos y devoluciones.
+            </p>
+          </article>
+
+          <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
+            <h3 class="text-lg font-semibold">4) Fotos y prueba</h3>
+            <p class="mt-2 text-sm text-white/75">
+              Fotos nítidas + una foto “prueba” (pantalla encendida, número de serie tapado parcialmente, etc.).
+              Mejor pocas buenas que muchas malas.
+            </p>
+          </article>
+
+          <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
+            <h3 class="text-lg font-semibold">5) Precio con lógica</h3>
+            <p class="mt-2 text-sm text-white/75">
+              Si el precio está por encima del mercado, justifícalo (estado, extras, garantía, urgencia).
+              Si está por debajo, dilo como ventaja (“precio para vender rápido”).
+            </p>
+          </article>
+
+          <article class="glass rounded-2xl p-6 ring-1 ring-white/10">
+            <h3 class="text-lg font-semibold">6) CTA simple</h3>
+            <p class="mt-2 text-sm text-white/75">
+              Una llamada a la acción clara aumenta mensajes: “Si te interesa, escríbeme y te respondo rápido.”
+            </p>
+          </article>
+        </div>
+
+        <div class="mt-10 glass rounded-2xl p-7 ring-1 ring-white/10">
+          <h3 class="text-lg font-semibold">Publicar en varios marketplaces (sin repetir trabajo)</h3>
+          <p class="mt-2 text-sm text-white/75">
+            Crea el anuncio base con esta estructura y publícalo manualmente en la plataforma que prefieras.
+            Puedes usar marketplaces como <strong>Vinted, Wallapop, Milanuncios o eBay</strong> como ejemplos habituales.
+            Lo importante es: <strong>un anuncio excelente reutilizable</strong>.
+          </p>
+          <div class="mt-5 flex flex-wrap gap-3">
+            <a
+              href="https://gaviraboost.gaviralabs.com"
+              class="btn inline-flex items-center justify-center rounded-xl bg-indigo-500/90 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-500/20 hover:bg-indigo-500"
+            >
+              Crear anuncio en GaviraBoost
+            </a>
+            <a
+              href="#faq"
+              class="btn inline-flex items-center justify-center rounded-xl bg-white/10 px-5 py-3 text-sm font-semibold text-white ring-1 ring-white/15 hover:bg-white/15"
+            >
+              Ver preguntas frecuentes
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Template -->
+      <section id="plantilla" class="py-14 md:py-20">
+        <div class="max-w-3xl">
+          <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">Plantilla lista para copiar</h2>
+          <p class="mt-2 text-white/70">
+            Copia esto, rellena campos y tendrás un anuncio estructurado. Ideal para reutilizar en varias plataformas.
+          </p>
+        </div>
+
+        <div class="mt-8 glass rounded-2xl p-6 ring-1 ring-white/10">
+          <div class="flex items-center justify-between gap-4">
+            <div class="text-sm font-semibold">Formato recomendado</div>
+            <button
+              class="btn rounded-xl bg-white/10 px-4 py-2 text-xs font-semibold text-white ring-1 ring-white/15 hover:bg-white/15"
+              onclick="copyTemplate()"
+              type="button"
+            >
+              Copiar plantilla
+            </button>
+          </div>
+
+          <pre class="mt-4 overflow-x-auto rounded-xl bg-black/40 p-4 text-xs leading-relaxed ring-1 ring-white/10"><code id="tpl">📌 TÍTULO
+[Qué vendes] + [Marca/Modelo] + [Estado] + [Detalle clave]
+
+✅ DESCRIPCIÓN (1ª frase: beneficio)
+- Funciona/estado general:
+- Qué incluye:
+- Motivo de venta:
+- Envío/entrega:
+- Precio y negociación:
+- CTA: “Si te interesa, escríbeme y respondo rápido.”</code></pre>
+
+          <p class="mt-3 text-xs text-white/55">
+            Consejo: adapta una línea según la plataforma, pero mantén el anuncio base.
+          </p>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="py-14 md:py-20">
+        <div class="max-w-3xl">
+          <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">FAQ</h2>
+          <p class="mt-2 text-white/70">Respuestas claras para dudas típicas (y también ayuda al SEO).</p>
+        </div>
+
+        <div class="mt-8 space-y-3">
+          <details class="glass rounded-2xl p-5 ring-1 ring-white/10">
+            <summary class="cursor-pointer font-semibold">¿Es legal mencionar Vinted, Wallapop, eBay o Milanuncios?</summary>
+            <p class="mt-3 text-sm text-white/75">
+              Sí, como referencia descriptiva. Lo que evitamos es sugerir afiliación, integración oficial o automatización contra normas.
+              Aquí hablamos de crear un anuncio y publicarlo manualmente.
+            </p>
+          </details>
+
+          <details class="glass rounded-2xl p-5 ring-1 ring-white/10">
+            <summary class="cursor-pointer font-semibold">¿GaviraBoost publica automáticamente en esas plataformas?</summary>
+            <p class="mt-3 text-sm text-white/75">
+              No. GaviraBoost te ayuda a crear el anuncio (estructura, texto, claridad) y luego tú lo publicas manualmente donde quieras.
+              Eso es más estable, legal y sostenible.
+            </p>
+          </details>
+
+          <details class="glass rounded-2xl p-5 ring-1 ring-white/10">
+            <summary class="cursor-pointer font-semibold">¿Cuánto tarda en posicionar en Google?</summary>
+            <p class="mt-3 text-sm text-white/75">
+              Si ya tienes Search Console y sitemap bien, Google puede indexar en 24–72h.
+              El posicionamiento real llega con semanas de contenido útil y enlaces.
+            </p>
+          </details>
+        </div>
+
+        <div class="mt-10 text-center">
+          <a
+            href="https://gaviraboost.gaviralabs.com"
+            class="btn inline-flex items-center justify-center rounded-xl bg-white px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-white/10 hover:bg-white/90"
+          >
+            Entrar a GaviraBoost
+          </a>
+        </div>
+      </section>
+
+      <!-- Legal note -->
+      <section class="pb-16">
+        <div class="glass rounded-2xl p-6 text-xs text-white/55 ring-1 ring-white/10">
+          <p>
+            Vinted, Wallapop, eBay, Milanuncios y otras marcas mencionadas pertenecen a sus respectivos titulares.
+            No existe afiliación oficial ni integración directa. El usuario es responsable de publicar manualmente su anuncio en cada plataforma.
+          </p>
+        </div>
+      </section>
+
+      <footer class="border-t border-white/10 py-10 text-center text-xs text-white/55">
+        <div>© <span id="year"></span> GaviraLabs — Built for speed.</div>
+        <div class="mt-3 flex flex-wrap justify-center gap-4">
+          <a class="underline hover:text-white" href="/aviso-legal.html">Aviso legal</a>
+          <a class="underline hover:text-white" href="/privacidad.html">Privacidad</a>
+          <a class="underline hover:text-white" href="/cookies.html">Cookies</a>
+          <a class="underline hover:text-white" href="/terminos.html">Términos</a>
+          <a class="underline hover:text-white" href="/security.html">Security</a>
+          <a class="underline hover:text-white" href="/contacto.html">Contacto</a>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      function copyTemplate() {
+        const text = document.getElementById("tpl").innerText;
+        navigator.clipboard.writeText(text).then(() => {
+          // tiny feedback without changing design
+          alert("Plantilla copiada ✅");
+        });
+      }
+    </script>
+  </body>
+</html>
