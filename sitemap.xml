@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.gaviralabs.com/</loc></url>
-  <url><loc>https://www.gaviralabs.com/aviso-legal.html</loc></url>
-  <url><loc>https://www.gaviralabs.com/privacidad.html</loc></url>
-  <url><loc>https://www.gaviralabs.com/cookies.html</loc></url>
-  <url><loc>https://www.gaviralabs.com/terminos.html</loc></url>
-  <url><loc>https://www.gaviralabs.com/security.html</loc></url>
-  <url><loc>https://www.gaviralabs.com/contacto.html</loc></url>
+
+  <url>
+    <loc>https://www.gaviralabs.com/</loc>
+  </url>
+
+  <url>
+    <loc>https://www.gaviralabs.com/aviso-legal.html</loc>
+  </url>
+
+  <url>
+    <loc>https://www.gaviralabs.com/privacidad.html</loc>
+  </url>
+
+  <url>
+    <loc>https://www.gaviralabs.com/cookies.html</loc>
+  </url>
+
+  <url>
+    <loc>https://www.gaviralabs.com/terminos.html</loc>
+  </url>
+
+  <url>
+    <loc>https://www.gaviralabs.com/security.html</loc>
+  </url>
+
+  <url>
+    <loc>https://www.gaviralabs.com/contacto.html</loc>
+  </url>
+
+  <url>
+    <loc>https://www.gaviralabs.com/crear-anuncios-para-vender-mas.html</loc>
+  </url>
+
 </urlset>
