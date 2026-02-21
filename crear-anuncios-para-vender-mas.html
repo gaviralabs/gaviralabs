@@ -501,6 +501,16 @@
           tpl_desc: "Rellena campos y tendrás un anuncio estructurado. Ideal para reutilizar en varias plataformas.",
           tpl_box_t: "Formato recomendado",
           tpl_copy: "Copiar plantilla",
+          tpl_code: `📌 TÍTULO
+[Qué vendes] + [Marca/Modelo] + [Estado] + [Detalle clave]
+
+✅ DESCRIPCIÓN (primera frase: beneficio + confianza)
+- Estado general:
+- Qué incluye:
+- Motivo de venta:
+- Entrega / envío:
+- Precio y negociación:
+- CTA: “Si te interesa, escríbeme y respondo rápido.”`,
           tpl_note: "Consejo: ajusta una línea según la plataforma, pero mantén el anuncio base.",
           faq_title: "FAQ",
           faq_desc: "Respuestas rápidas (y ayuda al SEO).",
@@ -590,6 +600,16 @@
           tpl_desc: "Fill the fields and you’ll have a structured listing. Perfect for reuse across platforms.",
           tpl_box_t: "Recommended format",
           tpl_copy: "Copy template",
+          tpl_code: `📌 TITLE
+[What you’re selling] + [Brand/Model] + [Condition] + [Key detail]
+
+✅ DESCRIPTION (first sentence: benefit + trust)
+- Overall condition:
+- What’s included:
+- Reason for selling:
+- Delivery / shipping:
+- Price & negotiation:
+- CTA: “If you’re interested, message me and I’ll reply quickly.”`,
           tpl_note: "Tip: tweak one line per platform, but keep the base listing.",
           faq_title: "FAQ",
           faq_desc: "Quick answers (also helps SEO).",
@@ -621,7 +641,12 @@
           if (dict[key]) el.textContent = dict[key];
         });
 
-        const esBtn = document.getElementById("lang-es");
+        
+
+        const tplEl = document.getElementById("tpl");
+        if (tplEl && dict.tpl_code) tplEl.textContent = dict.tpl_code;
+
+const esBtn = document.getElementById("lang-es");
         const enBtn = document.getElementById("lang-en");
         const active = "bg-white/10 text-white";
         const inactive = "text-white/70 hover:text-white";
@@ -686,3 +711,8 @@
     </script>
   </body>
 </html>
+
+<hr>
+<h2>¿Quieres automatizar este proceso?</h2>
+<p>Boost Listing convierte esta metodología en un sistema reutilizable para crear anuncios optimizados en minutos.</p>
+<a href="https://www.gaviralabs.com/" style="font-weight:bold;">Descubre Boost Listing →</a>

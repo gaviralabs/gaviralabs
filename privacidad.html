@@ -14,17 +14,29 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="bg-slate-950 text-white">
+
+  <div class="mx-auto max-w-6xl px-6 pt-6">
+    <div class="flex items-center justify-between gap-4">
+      <a href="index.html" class="text-sm font-semibold text-white/80 hover:text-white">← GaviraLabs</a>
+      <div class="inline-flex rounded-xl bg-white/5 p-1 ring-1 ring-white/10">
+        <button id="lang-es" class="rounded-lg px-3 py-1 text-xs font-medium text-white bg-white/10" aria-label="Cambiar a Español">ES</button>
+        <button id="lang-en" class="rounded-lg px-3 py-1 text-xs font-medium text-white/70 hover:text-white" aria-label="Switch to English">EN</button>
+      </div>
+    </div>
+</div>
+
     <main class="mx-auto max-w-3xl px-4 py-10">
-      <a href="/" class="text-sm text-white/70 hover:text-white">← Volver</a>
+      <a href="/" class="text-sm text-white/70 hover:text-white" data-lang="es">← Volver</a>
+      <a href="/" class="text-sm text-white/70 hover:text-white hidden" data-lang="en">← Back</a>
 
       <header class="mt-4">
         <h1 class="text-3xl font-semibold tracking-tight">Política de privacidad</h1>
-        <p class="mt-2 text-sm text-white/60">Última actualización: 2026-02-20</p>
+        <p class="mt-2 text-sm text-white/60" data-lang="es">Última actualización: 2026-02-20</p>
+        <p class="mt-2 text-sm text-white/60 hidden" data-lang="en">Last updated: 2026-02-20</p>
       </header>
 
-      <section class="prose prose-invert mt-8 max-w-none prose-a:text-indigo-300">
-        
-<p>Esta política explica cómo tratamos los datos personales cuando navegas por el sitio o nos contactas. Se aplica conforme al Reglamento (UE) 2016/679 (<strong>RGPD</strong>) y la Ley Orgánica 3/2018 (<strong>LOPDGDD</strong>).</p>
+      <section id="content-es" class="prose prose-invert mt-8 max-w-none prose-a:text-indigo-300">
+        <p>Esta política explica cómo tratamos los datos personales cuando navegas por el sitio o nos contactas. Se aplica conforme al Reglamento (UE) 2016/679 (<strong>RGPD</strong>) y la Ley Orgánica 3/2018 (<strong>LOPDGDD</strong>).</p>
 
 <h2>1. Responsable del tratamiento</h2>
 <ul>
@@ -74,14 +86,10 @@
 
 <h2>10. Cambios</h2>
 <p>Podemos actualizar esta política cuando sea necesario. La fecha de “Última actualización” indica la versión vigente.</p>
-
       </section>
 
-      <details class="mt-10 rounded-2xl bg-white/5 p-5 ring-1 ring-white/10">
-        <summary class="cursor-pointer text-sm font-semibold">Privacy policy (English)</summary>
-        <div class="prose prose-invert mt-4 max-w-none prose-a:text-indigo-300">
-          
-<p>This policy explains how we process personal data when you browse the site or contact us, under GDPR and Spanish data protection law.</p>
+      <section id="content-en" class="prose prose-invert mt-8 max-w-none prose-a:text-indigo-300 hidden">
+        <p>This policy explains how we process personal data when you browse the site or contact us, under GDPR and Spanish data protection law.</p>
 
 <h2>1. Data controller</h2>
 <ul>
@@ -125,16 +133,56 @@
 
 <h2>9. Complaints</h2>
 <p>You may lodge a complaint with the Spanish DPA (AEPD) if you believe your rights were infringed.</p>
-
-        </div>
-      </details>
-
-      <footer class="mt-12 border-t border-white/10 pt-6 text-xs text-white/55">
+      </section>
+<footer class="mt-12 border-t border-white/10 pt-6 text-xs text-white/55">
         <div><strong>Titular / Owner:</strong> Alejandro Gavira Garcia</div>
         <div><strong>Marca / Brand:</strong> GaviraLabs</div>
         <div><strong>Ubicación / Location:</strong> Marbella, Málaga, España</div>
         <div><strong>Email:</strong> <a class="underline hover:text-white" href="mailto:gaviralabs@gmail.com">gaviralabs@gmail.com</a></div>
       </footer>
     </main>
+  
+    
+    <script>
+      function setLang(lang) {
+        const isEn = lang === "en";
+        document.documentElement.lang = isEn ? "en" : "es";
+
+        const esBtn = document.getElementById("lang-es");
+        const enBtn = document.getElementById("lang-en");
+        const active = "bg-white/10 text-white";
+        const inactive = "text-white/70 hover:text-white";
+
+        if (isEn) {
+          enBtn.className = `rounded-lg px-3 py-1 text-xs font-medium ${active}`;
+          esBtn.className = `rounded-lg px-3 py-1 text-xs font-medium ${inactive}`;
+        } else {
+          esBtn.className = `rounded-lg px-3 py-1 text-xs font-medium ${active}`;
+          enBtn.className = `rounded-lg px-3 py-1 text-xs font-medium ${inactive}`;
+        }
+
+        // Toggle any nodes marked with data-lang
+        document.querySelectorAll("[data-lang]").forEach((el) => {
+          const show = el.getAttribute("data-lang") === (isEn ? "en" : "es");
+          el.classList.toggle("hidden", !show);
+        });
+
+        // Toggle the main content blocks
+        const esContent = document.getElementById("content-es");
+        const enContent = document.getElementById("content-en");
+        if (esContent) esContent.classList.toggle("hidden", isEn);
+        if (enContent) enContent.classList.toggle("hidden", !isEn);
+
+        localStorage.setItem("gaviralabs_lang", lang);
+      }
+
+      document.getElementById("lang-es").addEventListener("click", () => setLang("es"));
+      document.getElementById("lang-en").addEventListener("click", () => setLang("en"));
+
+      const saved = localStorage.getItem("gaviralabs_lang");
+      setLang(saved || "es");
+    </script>
+
+
   </body>
 </html>
