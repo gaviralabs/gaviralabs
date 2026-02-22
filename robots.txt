@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
 Sitemap: https://www.gaviralabs.com/sitemap.xml
-Host: https://www.gaviralabs.com
