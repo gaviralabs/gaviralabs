@@ -18,8 +18,8 @@
     <div class="flex items-center justify-between gap-4">
       <a href="index.html" class="text-sm font-semibold text-white/80 hover:text-white">← GaviraLabs</a>
       <div class="inline-flex rounded-xl bg-white/5 p-1 ring-1 ring-white/10">
-        <button id="lang-es" class="rounded-lg px-3 py-1 text-xs font-medium text-white bg-white/10" aria-label="Cambiar a Español">ES</button>
-        <button id="lang-en" class="rounded-lg px-3 py-1 text-xs font-medium text-white/70 hover:text-white" aria-label="Switch to English">EN</button>
+        <button id="lang-es" class="rounded-lg px-3 py-1 text-xs font-medium text-white bg-white/10" aria-label="Cambiar a Español" aria-pressed="true">ES</button>
+        <button id="lang-en" class="rounded-lg px-3 py-1 text-xs font-medium text-white/70 hover:text-white" aria-label="Switch to English" aria-pressed="false">EN</button>
       </div>
     </div>
 </div>
@@ -128,6 +128,17 @@
         if (esContent) esContent.classList.toggle("hidden", isEn);
         if (enContent) enContent.classList.toggle("hidden", !isEn);
 
+                // Keep URL in sync (so ?lang=en works and is shareable)
+        try {
+          const url = new URL(window.location.href);
+          if (lang === "en") url.searchParams.set("lang", "en");
+          else url.searchParams.delete("lang");
+          window.history.replaceState({}, "", url);
+        } catch {}
+
+esBtn.setAttribute("aria-pressed", lang === "en" ? "false" : "true");
+        enBtn.setAttribute("aria-pressed", lang === "en" ? "true" : "false");
+
         localStorage.setItem("gaviralabs_lang", lang);
       }
 
@@ -135,7 +146,9 @@
       document.getElementById("lang-en").addEventListener("click", () => setLang("en"));
 
       const saved = localStorage.getItem("gaviralabs_lang");
-      setLang(saved || "es");
+      const urlLang = new URLSearchParams(window.location.search).get("lang");
+      const initial = (urlLang === "en" || urlLang === "es") ? urlLang : ((saved === "en" || saved === "es") ? saved : "es");
+      setLang(initial);
     </script>
 
 
